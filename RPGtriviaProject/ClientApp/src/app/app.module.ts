@@ -12,7 +12,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { TriviaComponent } from '../../trivia/trivia.component';
+import { TriviaComponent } from './trivia/trivia.component';
+import { QuestionMasterComponent } from './question-master/question-master.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { TriviaComponent } from '../../trivia/trivia.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    TriviaComponent
+    TriviaComponent,
+    QuestionMasterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,7 +35,8 @@ import { TriviaComponent } from '../../trivia/trivia.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'question', component: TriviaComponent }
+      { path: 'question', component: QuestionMasterComponent }
+
     ])
   ],
   providers: [

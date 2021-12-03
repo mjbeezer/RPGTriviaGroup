@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Question, Result } from '../Question';
-import { TriviaApiService } from '../trivia-api.service';
+import { Question, Result } from '../../../Question';
+import { TriviaApiService } from '../../../trivia-api.service';
 
 @Component({
     selector: 'app-trivia',
