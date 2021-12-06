@@ -16,6 +16,7 @@ export class TriviaComponent {
 
 
   result: Result = {} as Result;
+  battleNumber = 1;
 
   ngOnInit(): void {
     this.displayEasyQuestions();
