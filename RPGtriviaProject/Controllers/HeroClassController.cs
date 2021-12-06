@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RPGtriviaProject.Models;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,14 @@ namespace RPGtriviaProject.Controllers
         [HttpGet("allClasses")]
         public List<Heroes> displayAllHeroes()
         {
-            return context.Heroes.ToList();
+            return context.Heroes.Include(H => H.HeroClassNavigation).ToList();
             
         }
 
         [HttpGet("allClasses/{id}")]
         public Heroes getHeroById(int id)
         {
-            return context.Heroes.Find(id);
+            return context.Heroes.Include(H => H.HeroClassNavigation).ToList().Find(H => H.Id == id);
 
 
         }

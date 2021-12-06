@@ -32,11 +32,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\Hero.ts" />
+    <None Remove="ClientApp\Player.ts" />
     <None Remove="ClientApp\Question.ts" />
+    <None Remove="ClientApp\Villain.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\Hero.ts" />
+    <TypeScriptCompile Include="ClientApp\Player.ts" />
     <TypeScriptCompile Include="ClientApp\Question.ts" />
+    <TypeScriptCompile Include="ClientApp\Villain.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
