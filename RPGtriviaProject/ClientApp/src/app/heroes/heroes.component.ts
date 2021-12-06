@@ -11,7 +11,7 @@ import { HeroService } from '../../../hero.service';
 export class HeroesComponent {
   /** Heroes ctor */
   heroList: Hero[] = [];
-
+  hero: Hero = {} as Hero;
     constructor(private heroservice: HeroService) {
 
   }
@@ -21,5 +21,14 @@ export class HeroesComponent {
       this.heroList = response;
       console.log(response);
     })
+  }
+
+  GetHeroById(id: number): any {
+    this.heroservice.GetHeroById(id).subscribe((response: any) => {
+
+      this.hero = response;
+      console.log(response);
+    })
+
   }
 }

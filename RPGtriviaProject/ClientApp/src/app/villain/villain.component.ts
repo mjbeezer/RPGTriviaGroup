@@ -11,7 +11,7 @@ import { VillainService } from '../../../villain.service';
 export class VillainComponent {
   /** Villain ctor */
   villainList: Villain[] = [];
-  
+  villain: Villain = {} as Villain;
     constructor(private villainservice: VillainService) {
 
   }
@@ -21,5 +21,14 @@ export class VillainComponent {
       this.villainList = response;
       console.log(response);
     })
+  }
+
+  GetVillainById(id: number): any {
+    this.villainservice.GetVillainById(id).subscribe((response: any) => {
+
+      this.villain = response;
+      console.log(response);
+    })
+    
   }
 }

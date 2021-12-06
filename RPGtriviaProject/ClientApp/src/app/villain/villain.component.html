@@ -1,1 +1,6 @@
-﻿<div style="border: 1px solid red">Villain Component</div>
+<div *ngFor="let V of villainList">
+  <p> {{ V.name }} {{ V.race }} {{ V.healthPoints }} {{ V.type }} {{ V.ability }} <img src="{{ V.imageNavigation.imageName }}" /> </p>
+
+
+
+     </div>

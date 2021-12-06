@@ -16,7 +16,7 @@ namespace RPGtriviaProject.Controllers
 
         TriviaDBContext context = new TriviaDBContext();
         [HttpGet("allVillains")]
-        public List<Villains> displayAllHeroes()
+        public List<Villains> displayAllVillains()
         {
             return context.Villains.Include(V => V.ImageNavigation).ToList();
 

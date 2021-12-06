@@ -15,6 +15,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { TriviaComponent } from './trivia/trivia.component';
 import { QuestionMasterComponent } from './question-master/question-master.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { VillainComponent } from './villain/villain.component';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { HeroesComponent } from './heroes/heroes.component';
     FetchDataComponent,
     TriviaComponent,
     QuestionMasterComponent,
-    HeroesComponent
+    HeroesComponent,
+    VillainComponent
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +40,8 @@ import { HeroesComponent } from './heroes/heroes.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'question', component: QuestionMasterComponent }
+      { path: 'question', component: QuestionMasterComponent },
+      { path: 'villain', component: VillainComponent }
 
     ])
   ],
