@@ -1,1 +1,2 @@
-<app-trivia *ngFor="let t of [].constructor(QuestionCount)"></app-trivia>
+<app-trivia *ngFor="let t of [].constructor(QuestionCount); index as i" *ngIf="i == QuestionCount - 1"></app-trivia>
+<button (click)="addquestion()"></button>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RPGtriviaProject.Models;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace RPGtriviaProject.Controllers
 
             //UserId matches long string of gibberish. Need to return all heroes of given player
 
-            Players result = context.Players.Where(P => P.UserId == U).First();
+            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
             return result.Heroes.ToList();
 
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
