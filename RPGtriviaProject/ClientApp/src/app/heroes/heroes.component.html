@@ -1,1 +1,10 @@
-﻿<div style="border: 1px solid red">Heroes Component</div>
+<div *ngFor="let H of heroList">
+  <img src="{{ H.imageNavigation.imageName }}" />
+  <p>
+    HP:{{ H.healthPoints }} Class: {{ H.class }} Ability: {{ H.ability }}
+  </p>
+  <p>
+    Bio: {{ H.bio }}
+  </p>
+
+</div>

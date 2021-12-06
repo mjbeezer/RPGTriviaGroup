@@ -14,18 +14,18 @@ namespace RPGtriviaProject.Controllers
     public class HeroClassController : ControllerBase
     { TriviaDBContext context = new TriviaDBContext();
         [HttpGet("allClasses")]
-        public List<Heroes> displayAllHeroes()
+        public List<HeroInfo> displayAllHeroes()
         {
-            return context.Heroes.Include(H => H.HeroClassNavigation).ToList();
+            //return context.Heroes.Include(H => H.HeroClassNavigation).ToList();
+            return context.HeroInfo.Include(H => H.ImageNavigation).ToList();
             
         }
 
         [HttpGet("allClasses/{id}")]
-        public Heroes getHeroById(int id)
+        public HeroInfo getHeroById(int id)
         {
-            return context.Heroes.Include(H => H.HeroClassNavigation).ToList().Find(H => H.Id == id);
-
-
+            //return context.Heroes.Include(H => H.HeroClassNavigation).ToList().Find(H => H.Id == id);
+            return context.HeroInfo.Include(H => H.ImageNavigation).ToList().Find(H => H.Id == id);
         }
     }
 }

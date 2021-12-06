@@ -14,6 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { TriviaComponent } from './trivia/trivia.component';
 import { QuestionMasterComponent } from './question-master/question-master.component';
+import { HeroesComponent } from './heroes/heroes.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { QuestionMasterComponent } from './question-master/question-master.compo
     CounterComponent,
     FetchDataComponent,
     TriviaComponent,
-    QuestionMasterComponent
+    QuestionMasterComponent,
+    HeroesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
