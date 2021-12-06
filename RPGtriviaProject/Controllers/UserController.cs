@@ -28,7 +28,7 @@ namespace RPGtriviaProject.Controllers
         [HttpGet("players/{id}")]
         public Players getPlayerById(int id)
         {
-            return context.Players.Find(id);
+            return context.Players.Include(P => P.AvatarImageNavigation).Include(P => P.TitleNavigation).ToList().Find(P => P.Id == id);
 
 
         }
@@ -47,7 +47,14 @@ namespace RPGtriviaProject.Controllers
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
         }
 
-
+        [HttpGet("heroById/${id}")]
+        public Heroes getPlayerHero(int id)
+        {
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
+            Heroes currentHero = result.Heroes.First(H => H.Id == id);
+            return currentHero;
+        }
 
 
         [HttpPost("createUserHero")]
@@ -56,8 +63,9 @@ namespace RPGtriviaProject.Controllers
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             //add authorization to front end for loggen in users to add events
-            Heroes newHero = new Heroes() { Name = name, HeroClass = heroClass, };
-            
+            int ID = context.Players.ToList().Find(P => P.UserId == U).Id;
+            Heroes newHero = new Heroes() { Name = name, HeroClass = heroClass, UserId = ID};
+            this.context.Heroes.Add(newHero);
             this.context.SaveChanges();
             return newHero;
         }
@@ -67,7 +75,7 @@ namespace RPGtriviaProject.Controllers
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             Heroes result = context.Heroes.Find(id);
-            this.context.Remove(result);
+            this.context.Heroes.Remove(result);
             this.context.SaveChanges();
             return result;
 
