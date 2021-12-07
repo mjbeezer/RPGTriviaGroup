@@ -16,6 +16,8 @@ import { TriviaComponent } from './trivia/trivia.component';
 import { QuestionMasterComponent } from './question-master/question-master.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { VillainComponent } from './villain/villain.component';
+import { PlayersComponent } from './players/players.component';
+import { CreateHeroComponent } from './create-hero/create-hero.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { VillainComponent } from './villain/villain.component';
     TriviaComponent,
     QuestionMasterComponent,
     HeroesComponent,
-    VillainComponent
+    VillainComponent,
+    PlayersComponent,
+    CreateHeroComponent
     
   ],
   imports: [
@@ -40,8 +44,11 @@ import { VillainComponent } from './villain/villain.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'question', component: QuestionMasterComponent },
-      { path: 'villain', component: VillainComponent }
+      { path: 'questions', component: QuestionMasterComponent },
+      { path: 'villains', component: VillainComponent },
+      { path: 'heroes', component: HeroesComponent },
+      { path: 'players', component: PlayersComponent },
+      { path: 'createhero', component: CreateHeroComponent}
 
     ])
   ],
