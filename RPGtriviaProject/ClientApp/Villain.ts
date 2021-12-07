@@ -1,14 +1,14 @@
 export interface Villain {
   Id: number;
-  Name: string;
-  Race: string;
-  HealthPoints: number;
-  Type: string;
-  Ability: string;
-  Image: Images;
+  name: string;
+  race: string;
+  healthPoints: number;
+  type: string;
+  ability: string;
+  image: Images;
 }
 
 export interface Images {
-  Id: number;
-  ImageName: string;
+  id: number;
+  imageName: string;
 }

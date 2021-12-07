@@ -1,16 +1,16 @@
 export interface Hero {
-  Id: number;
-  Name: string;
-  UserId: number;
-  HeroClass: number;
-  HeroClassNavigation: HeroInfo;
+  id: number;
+  name: string;
+  userId: number;
+  heroClass: number;
+  heroClassNavigation: HeroInfo;
 }
 
 export interface HeroInfo {
-  Id: number;
-  HealthPoints: number;
-  Class: string;
-  Ability: string;
-  Bio: string;
-  Image: string;
+  id: number;
+  healthPoints: number;
+  class: string;
+  ability: string;
+  bio: string;
+  image: string;
 }

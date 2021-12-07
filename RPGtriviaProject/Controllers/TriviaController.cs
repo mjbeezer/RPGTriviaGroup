@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RPGtriviaProject.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace RPGtriviaProject.Controllers
             Random rnd = new Random();
             Villains enemy = new Villains();
             int villainID = rnd.Next(1, 3);
-            enemy = context.Villains.Find(villainID);
+            enemy = context.Villains.Include(V => V.ImageNavigation).ToList().Find(V => V.Id == villainID);
             return enemy;
         }
 
@@ -32,7 +33,7 @@ namespace RPGtriviaProject.Controllers
             Random rnd = new Random();
             Villains enemy = new Villains();
             int villainID = rnd.Next(3, 5);
-            enemy = context.Villains.Find(villainID);
+            enemy = context.Villains.Include(V => V.ImageNavigation).ToList().Find(V => V.Id == villainID);
             return enemy;
         }
         [HttpGet("hardVillain")]
@@ -41,7 +42,7 @@ namespace RPGtriviaProject.Controllers
             Random rnd = new Random();
             Villains enemy = new Villains();
             int villainID = rnd.Next(5, 7);
-            enemy = context.Villains.Find(villainID);
+            enemy = context.Villains.Include(V => V.ImageNavigation).ToList().Find(V => V.Id == villainID);
             return enemy;
         }
 
@@ -51,7 +52,7 @@ namespace RPGtriviaProject.Controllers
             Random rnd = new Random();
             Villains enemy = new Villains();
             int villainID = rnd.Next(7, 9);
-            enemy = context.Villains.Find(villainID);
+            enemy = context.Villains.Include(V => V.ImageNavigation).ToList().Find(V => V.Id == villainID);
             return enemy;
         }
 

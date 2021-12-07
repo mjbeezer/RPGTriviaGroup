@@ -1,7 +1,34 @@
+<div>
+  <p>{{ result.question }}</p>
+</div>
+<div>
+  <label for="option1">{{ result.correct_answer }}</label>
+  <input [(ngModel)]="input" type="radio" name="input" id="option1" value="{{ result.correct_answer }}" />
+</div>
+<div *ngFor="let r of result.incorrect_answers">
+  <label for="{{ r }}">{{ r }}</label>
+  <input [(ngModel)]="input" type="radio" name="input" id="{{ r }}" value="{{ r }}" />
+</div>
+<button (click)="inputCheck()">Submit Answer</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--<div *ngIf="battleNumber<4">-->
-  <div <!--style="background-image: url('https://postimg.cc/0zqhJkpH/2f581e25')"-->>
+  <!--<div--> <!--style="background-image: url('https://postimg.cc/0zqhJkpH/2f581e25')"--><!-->
     <p>{{ result.question }}</p>
-  </div>
+  </div>-->
 <!--</div>
 <div *ngIf="battleNumber=4">
   <div style="background-image: url('https://postimg.cc/14ndCnBj/954b7ca8')">
