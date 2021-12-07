@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Hero } from '../../../Hero';
+import { Hero, HeroInfo } from '../../../Hero';
 import { HeroService } from '../../../hero.service';
 import { PlayerService } from '../../../player.service';
 
@@ -19,11 +19,11 @@ export class CreateHeroComponent {
 
   createHero(form: NgForm): void {
     let newHero: Hero = {
-      id: form.form.value.id,
-      name: form.form.value.Name,
-      userId: form.form.value.userid,
+      id:null,
+      name: form.form.value.name,
+      userId: null,
       heroClass: form.form.value.class,
-      heroClassNavigation: form.form.value.HeroClassNavigation
+      heroClassNavigation: null,
 
     }
     console.log(newHero.name);

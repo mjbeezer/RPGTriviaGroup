@@ -16,6 +16,7 @@ export class QuestionMasterComponent {
   villain: Villain = {} as Villain;
   currentHero: Hero = {} as Hero;
   battleNumber = 1;
+  trogdorQuestions: number;
 
     /** QuestionMaster ctor */
   constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService) {
@@ -92,5 +93,39 @@ export class QuestionMasterComponent {
         this.battleNumber = 4;
       }
     }
+  }
+
+  loadBossParameters(checkInput: boolean): void {
+   
+    if (this.villain.name == "Trogdor the Burninator") {
+      this.currentHero.heroClassNavigation.healthPoints = 1;
+      this.trogdorQuestions = 0;
+      if (checkInput == true) {
+        this.trogdorQuestions++;
+        if (this.trogdorQuestions == 3) {
+          this.villain.healthPoints = 0;
+        }
+      }
+      else {
+        this.currentHero.heroClassNavigation.healthPoints = 0;
+      }
+
+    }
+
+    else if (this.villain.name == "Justin the Gatekeeper")
+    {
+      if (checkInput == true) {
+        this.currentHero.heroClassNavigation.healthPoints = 0;
+      }
+
+      else if (checkInput == false) {
+        this.currentHero.heroClassNavigation.healthPoints = 0;
+      }
+
+    }
+
+   
+
+
   }
 }
