@@ -1,2 +1,7 @@
-<div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia *ngIf="i == QuestionCount - 1"></app-trivia></div>
-<button (click)="addquestion()"></button>
+<div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1"></app-trivia></div>
+
+<div>
+  <p>{{ villain.name }} :: {{ villain.race }}</p>
+  <p>{{ villain.healthPoints }}</p>
+  <img src="{{ villain.imageNavigation.imageName }} }}" />
+</div>
