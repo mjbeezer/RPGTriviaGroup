@@ -19,14 +19,20 @@ namespace RPGtriviaProject.Controllers
         TriviaDBContext context = new TriviaDBContext();
 
         [HttpGet("registerUser")]
-        public Players registerUser(string user_Name, int avater_Image, string avatar_Color, int title)
+        public Players registerUser(string user_Name, int avatar_Image, string avatar_Color, int title)
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            Players newPlayer = new Players() { UserName = user_Name, AvatarImage = avater_Image, AvatarColor = avatar_Color, Title = title };
+            Players newPlayer = new Players() { UserId = U, GamesWon = 0, UserName = user_Name, AvatarImage = avatar_Image, AvatarColor = avatar_Color, Title = title };
             this.context.Players.Add(newPlayer);
             this.context.SaveChanges();
             return newPlayer;
 
+        }
+
+        [HttpGet("getImages")]
+        public List<Images> getAvatarImages()
+        {
+            return context.Images.ToList();
         }
 
         [HttpGet("players")]
@@ -73,7 +79,6 @@ namespace RPGtriviaProject.Controllers
         public Heroes addHero(string name, int heroClass)
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //add authorization to front end for loggen in users to add events
             int ID = context.Players.ToList().Find(P => P.UserId == U).Id;
             Heroes newHero = new Heroes() { Name = name, HeroClass = heroClass, UserId = ID};
             this.context.Heroes.Add(newHero);

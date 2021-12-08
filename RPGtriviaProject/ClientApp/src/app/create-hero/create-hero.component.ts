@@ -18,17 +18,13 @@ export class CreateHeroComponent {
   }
 
   createHero(form: NgForm): void {
-    let newHero: Hero = {
-      id:null,
-      name: form.form.value.name,
-      userId: null,
-      heroClass: form.form.value.class,
-      heroClassNavigation: null,
 
-    }
-    console.log(newHero.name);
+    let name:string = form.form.value.name;
+    let heroClass:number = form.form.value.class;
 
-    this.player_Service.CreatePlayerHero(newHero.name, newHero.heroClass).subscribe((response: any) => {
+    console.log(name);
+
+    this.player_Service.CreatePlayerHero(name, heroClass).subscribe((response: any) => {
       console.log(response);
     });
 
