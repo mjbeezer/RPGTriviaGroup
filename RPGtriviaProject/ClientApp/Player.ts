@@ -1,20 +1,20 @@
 export interface Player {
-  Id: number;
-  UserId: string;
-  UserName: string;
-  AvatarImage: Images;
-  AvatarColor: string;
-  GamesWon: number;
-  Title: Title;
+  id: number;
+  userId: string;
+  userName: string;
+  avatarImage: Images;
+  avatarColor: string;
+  gamesWon: number;
+  title: Title;
 }
 
 export interface Images {
-  Id: number;
-  ImageName: string;
+  id: number;
+  imageName: string;
 }
 
 export interface Title {
-  Id: number;
-  Title1: string;
-  GamesWon: number;
+  id: number;
+  title1: string;
+  gamesWon: number;
 }

@@ -18,6 +18,17 @@ namespace RPGtriviaProject.Controllers
     {   
         TriviaDBContext context = new TriviaDBContext();
 
+        [HttpGet("registerUser")]
+        public Players registerUser(string user_Name, int avater_Image, string avatar_Color, int title)
+        {
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players newPlayer = new Players() { UserName = user_Name, AvatarImage = avater_Image, AvatarColor = avatar_Color, Title = title };
+            this.context.Players.Add(newPlayer);
+            this.context.SaveChanges();
+            return newPlayer;
+
+        }
+
         [HttpGet("players")]
         public List<Players> playerRankings()
         {
@@ -91,7 +102,7 @@ namespace RPGtriviaProject.Controllers
 
         }
 
-
+        
              
 
 

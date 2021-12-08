@@ -9,6 +9,10 @@ export class PlayerService {
 
   }
 
+  RegisterNewPlayer(user_Name:string, avatar_Image:string, avataer_Color:string, title:number ): any {
+    return this.http.get(this.baseUrl + `api/User/registerUser?UserName=${user_Name}&AvatarImage=${avatar_Image}&AvatarColor=${avataer_Color}&Title=${title}`, {});
+  }
+
   DisplayAllPlayers(): any {
     return this.http.get(this.baseUrl + `api/User/players`);
   }
