@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Hero } from '../../../Hero';
 import { PlayerService } from '../../../player.service';
 import { TriviaApiService } from '../../../trivia-api.service';
@@ -15,6 +16,7 @@ export class QuestionMasterComponent {
   QuestionCount: number = 1;
   villain: Villain = {} as Villain;
   currentHero: Hero = {} as Hero;
+  playerHeroes: Hero[] = [];
   battleNumber = 1;
   trogdorQuestions: number;
 
@@ -59,8 +61,17 @@ export class QuestionMasterComponent {
     })
   }
 
-  loadCurrentHero(hero_id: number): void {
-    this.player_Service.GetCurrentHero(hero_id).subscribe((response: any) => {
+  loadPlayerHeroes(userID: number): void {
+    this.player_Service.GetPlayerHeroes().subscribe((response: any) => {
+      console.log(response);
+      this.playerHeroes = response;
+    })
+
+  }
+
+  loadCurrentHero(form: NgForm): void {
+    let id: number = form.form.value.currentHero;
+    this.player_Service.GetCurrentHero(id).subscribe((response: any) => {
       console.log(response);
       this.currentHero = response;
     })
