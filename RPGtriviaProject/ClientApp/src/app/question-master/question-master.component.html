@@ -1,22 +1,22 @@
- <div *ngIf="playerHeroes == []">
+ <!--<div *ngIf="playerHeroes == []">
    <p>You do not have any heroes coward. </p>
    <button [routerLink]="['/createhero']"> Create Hero</button>
 
- </div>
+ </div>-->
 
 
-<div ngFor="let P of playerHeroes">
+<div *ngFor="let P of playerHeroes">
   <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
-  <label for="currentHero"> {{P.Name}} {{ P.Class }} </label>
+  <label for="currentHero"> {{P.name}} </label>
   <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
 
-  <input type="submit" value="Select Hero" />
+  <input type="submit" (click)="loadCurrentHero" value="Select Hero" />
     </form>
 </div>
 
 
 
-<div ngIf="currentHero != null">
+<!--<div ngIf="currentHero != null">-->
 <div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1"></app-trivia></div>
 
 <div>
@@ -24,4 +24,9 @@
   <p>{{ villain.healthPoints }}</p>
   <img src="{{ villain.imageNavigation.imageName }} }}" />
 </div>
-  </div>
+
+<div *ngIf="currentHero != null">
+  <p>{{ currentHero.name }}</p>
+  <p>{{ currentHero.heroClassNavigation.healthPoints }}</p>
+</div>
+  <!--</div>-->

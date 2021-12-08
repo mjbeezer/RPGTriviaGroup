@@ -27,6 +27,7 @@ export class QuestionMasterComponent {
 
   ngOnInit(): void {
     this.getEasyVillain();
+    this.loadPlayerHeroes();
   }
 
   addquestion(): void {
@@ -61,7 +62,7 @@ export class QuestionMasterComponent {
     })
   }
 
-  loadPlayerHeroes(userID: number): void {
+  loadPlayerHeroes(): void {
     this.player_Service.GetPlayerHeroes().subscribe((response: any) => {
       console.log(response);
       this.playerHeroes = response;
