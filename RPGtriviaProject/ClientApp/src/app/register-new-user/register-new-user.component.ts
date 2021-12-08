@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { Images } from '../../../Images';
 import { Player } from '../../../Player';
 import { PlayerService } from '../../../player.service';
 
@@ -10,25 +12,41 @@ import { PlayerService } from '../../../player.service';
 })
 /** registerNewUser component*/
 export class RegisterNewUserComponent {
+
+  imageList: Images[] = [];
+  newbieTitle: Title = {} as Title
+
     /** registerNewUser ctor */
     constructor(private player_Service:PlayerService) {
 
   }
 
+  ngOnInit(): void {
+    this.LoadAvatarImages();
+  }
+
   RegisterNewPlayer(form: NgForm): void {
-    let newPlayer: Player = {
-      id: null,
-      userId: null,
-      userName: form.form.value.username,
-      avatarImage: form.form.value.avatarImage,
-      avatarColor: form.form.value.avatarColor,
-      gamesWon: null,
-      title: form.form.value.title
+    console.log("hello");
 
-    }
-    console.log(newPlayer.userName);
+    let username: string = form.form.value.username;
+    let avatarImage: number = form.form.value.avatarImage;
+    let avatarColor: string = form.form.value.avatarColor;
 
-    this.player_Service.RegisterNewPlayer(newPlayer.userName, newPlayer.avatarImage.imageName, newPlayer.avatarColor, newPlayer.title.id).subscribe((response: any) => {
+    
+    console.log(form.form.value.username);
+    console.log(form.form.value.avatarImage);
+    console.log(form.form.value.avatarColor);
+    console.log(form.form.value.title);
+
+    //title is int 1 for Newbie
+    this.player_Service.RegisterNewPlayer(username, avatarImage, avatarColor, 1).subscribe((response: any) => {
+      console.log(response);
+    })
+  }
+
+  LoadAvatarImages(): void {
+    this.player_Service.GetAvatarImages().subscribe((response: any) => {
+      this.imageList = response;
       console.log(response);
     })
   }
