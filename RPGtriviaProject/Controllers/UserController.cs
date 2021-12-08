@@ -64,12 +64,13 @@ namespace RPGtriviaProject.Controllers
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
         }
 
-        [HttpGet("heroById/${id}")]
+        [HttpGet("heroById/{id}")]
         public Heroes getPlayerHero(int id)
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
-            Heroes currentHero = result.Heroes.First(H => H.Id == id);
+            //Heroes currentHero = result.Heroes.Include(H => H.HeroClassNavigation).First(H => H.Id == id);
+            Heroes currentHero = context.Heroes.Where(H => H.UserId == result.Id && H.Id == id).Include(H => H.HeroClassNavigation).First();
             return currentHero;
         }
 
