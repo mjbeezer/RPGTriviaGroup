@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
@@ -18,6 +16,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { VillainComponent } from './villain/villain.component';
 import { PlayersComponent } from './players/players.component';
 import { CreateHeroComponent } from './create-hero/create-hero.component';
+import { RegisterNewUserComponent } from './register-new-user/register-new-user.component';
 
 
 @NgModule({
@@ -25,14 +24,13 @@ import { CreateHeroComponent } from './create-hero/create-hero.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     TriviaComponent,
     QuestionMasterComponent,
     HeroesComponent,
     VillainComponent,
     PlayersComponent,
-    CreateHeroComponent
+    CreateHeroComponent,
+    RegisterNewUserComponent
     
   ],
   imports: [
@@ -42,13 +40,12 @@ import { CreateHeroComponent } from './create-hero/create-hero.component';
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'questions', component: QuestionMasterComponent },
       { path: 'villains', component: VillainComponent },
       { path: 'heroes', component: HeroesComponent },
       { path: 'players', component: PlayersComponent },
-      { path: 'createhero', component: CreateHeroComponent}
+      { path: 'createhero', component: CreateHeroComponent },
+      { path: 'register', component:RegisterNewUserComponent}
 
     ])
   ],
