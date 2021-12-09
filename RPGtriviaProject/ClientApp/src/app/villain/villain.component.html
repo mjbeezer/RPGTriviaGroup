@@ -1,6 +1,13 @@
-<div *ngFor="let V of villainList">
-  <p> {{ V.name }} {{ V.race }} {{ V.healthPoints }} {{ V.type }} {{ V.ability }} <img src="{{ V.imageNavigation.imageName }}" /> </p>
-
-
-
-     </div>
+<div *ngFor="let V of villainList" >
+  <div class="card" style="outline: auto; background-color: #E0C097">
+    <img src="{{ V.imageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097" />
+    <div class="card" style="text-align:center; outline: auto">
+      <h3>{{ V.name }} : {{ V.race }}</h3>
+      <h4>HP: {{ V.healthPoints }}</h4>
+      <h4>Difficulty: {{ V.type }}</h4>
+      <h4>{{ V.ability }}</h4>
+    </div>
+  </div>
+  <br />
+  <br />
+</div>
