@@ -17,6 +17,7 @@ import { VillainComponent } from './villain/villain.component';
 import { PlayersComponent } from './players/players.component';
 import { CreateHeroComponent } from './create-hero/create-hero.component';
 import { RegisterNewUserComponent } from './register-new-user/register-new-user.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RegisterNewUserComponent } from './register-new-user/register-new-user.
     VillainComponent,
     PlayersComponent,
     CreateHeroComponent,
-    RegisterNewUserComponent
+    RegisterNewUserComponent,
+    UserprofileComponent
     
   ],
   imports: [
