@@ -44,5 +44,7 @@ export class PlayerService {
   UpdatePlayerTitle(id: number): any {
     return this.http.patch(this.baseUrl + `api/User/updateUserTitle`, {});
   }
-
+  DeletePlayerProfile(id: number): any {
+    return this.http.delete(this.baseUrl + `api/User/deletePlayer/${id}`);
+  }
 }

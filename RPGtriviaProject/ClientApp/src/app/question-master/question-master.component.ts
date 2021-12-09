@@ -18,7 +18,7 @@ export class QuestionMasterComponent {
   currentHero: Hero = {} as Hero;
   playerHeroes: Hero[] = [];
   battleNumber = 1;
-
+  damageRoll: number;
   damageTaken: number = 0;
   whoDamage: string = "";
   StartingHealth: number = 0;
@@ -88,10 +88,21 @@ export class QuestionMasterComponent {
 
   dealDamage(checkInput: boolean): void {
     console.log(checkInput);
+
     if (checkInput == true) {
-      this.villain.healthPoints -= 2;
-      this.whoDamage = this.villain.name;
-      this.damageTaken = 2;
+      this.damageRoll = Math.floor(Math.random() * 3) +1;
+      if (this.currentHero.heroClass == 7 && this.damageRoll == 3) {
+        this.damageTaken = this.damageRoll + 2;
+        this.villain.healthPoints -= this.damageTaken;
+
+      }
+      else {
+
+        this.damageTaken = this.damageRoll;
+        this.villain.healthPoints -= this.damageTaken;
+        this.whoDamage = this.villain.name;
+        
+      }
     }
     else {
       this.currentHero.heroClassNavigation.healthPoints -= 2;

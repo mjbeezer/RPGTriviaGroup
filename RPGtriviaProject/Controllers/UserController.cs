@@ -98,7 +98,16 @@ namespace RPGtriviaProject.Controllers
 
         }
 
-        [HttpPatch("updateUserTitle")]
+        [HttpDelete("deletePlayer/{id}")]
+        public Players deletePLayerProfile(int id)
+        {
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
+            context.Players.Remove(result);
+            context.SaveChanges();
+            return result;
+        }
+            [HttpPatch("updateUserTitle")]
         public Players updateUserTitle(int id, int title)
         {   
             Players result = context.Players.Find(id);
