@@ -1,17 +1,19 @@
 <div>
-  <form #createHeroForm="ngForm" (ngSubmit)="CreateHero(createHeroForm)"></form>
+  <form #createHeroForm="ngForm" (ngSubmit)="createHero(createHeroForm)">
     <h3>Create Hero</h3><br />
 
     <label for="name">Enter A Hero Name</label><br />
-    <input name="Name" type="text" ngmodel placeholder="Remnar the Strong" required /><br />
+    <input name="name" type="text" ngModel placeholder="Remnar the Strong" required /><br />
 
     <p>Choose a Class</p>
     <label for="wizard">Wizard</label>
-    <input name="class" id="Wizard" type="radio" ngmodel required value="1" />
+    <input name="class" id="Wizard" type="radio" ngModel required value="5" />
 
     <label for="Knight">Knight</label>
-    <input name="class" id="Knight" type="radio" ngmodel required value="2" />
+    <input name="class" id="Knight" type="radio" ngModel required value="6" />
 
     <label for="Rogue">Rogue</label>
-    <input name="class" id="Rogue" type="radio" ngmodel required value="3" />
+    <input name="class" id="Rogue" type="radio" ngModel required value="7" />
+    <input type="submit" value="create hero" />
+  </form>
 </div>

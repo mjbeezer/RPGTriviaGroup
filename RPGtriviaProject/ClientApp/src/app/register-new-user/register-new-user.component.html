@@ -1,0 +1,24 @@
+<div>
+  <form #registerNewUser="ngForm" (ngSubmit)="RegisterNewPlayer(registerNewUser)">
+    <h3>Create A Player Profile</h3>
+
+    <label for="username">Enter a UserName</label><br />
+    <input name="username" type="text" id="username" ngModel placeholder="PewPewDie" required /><br />
+
+    <label for="avatarImage">Choose an Avatar</label><br />
+
+    <div *ngFor="let i of imageList">
+    <label for="avatarImage"><img src="{{ i.imageName }}" /></label>
+    <input name="avatarImage" id="avatarImage" type="radio" ngModel value="{{ i.id }}" required /><br />
+  </div>
+
+    <label for="avatarColor">Please Choose a Color From the Following Options: red, blue, green, purple, yellow, orange, black</label><br />
+    <input name="avatarColor" id="avatarColor" type="text" ngModel required /><br />
+
+    <label for="title">You shall be called "Newbie", defeat the evil bosses to unlock more titles!</label><br />
+    <input name="title" id="title" type="text" ngModel="Newbie" disabled value="Newbie"/><br />
+
+    <label>Click Register Player Profile to Start The Adventure</label><br />
+    <input type="submit" value="Register Player" />
+  </form>
+</div>

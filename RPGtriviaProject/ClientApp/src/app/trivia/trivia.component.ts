@@ -36,7 +36,11 @@ export class TriviaComponent {
     }
     else if (this.checkDifficulty == 3) {
       this.displayHardQuestions();
-    }    
+    }
+
+    else if (this.checkDifficulty == 4) {
+      this.displayMediumQuestions();
+    }
   }
   
   displayEasyQuestions(): void {

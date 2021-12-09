@@ -9,6 +9,14 @@ export class PlayerService {
 
   }
 
+  RegisterNewPlayer(user_Name:string, avatar_Image:number, avatar_Color:string, title:number ): any {
+    return this.http.get(this.baseUrl + `api/User/registerUser?user_Name=${user_Name}&avatar_Image=${avatar_Image}&avatar_Color=${avatar_Color}&Title=${title}`);
+  }
+
+  GetAvatarImages(): any {
+    return this.http.get(this.baseUrl + `api/User/getImages`);
+  }
+
   DisplayAllPlayers(): any {
     return this.http.get(this.baseUrl + `api/User/players`);
   }
@@ -26,7 +34,7 @@ export class PlayerService {
   }
 
   CreatePlayerHero(_name:string, _heroClass:number ): any {
-    return this.http.post(this.baseUrl + `api/User/createUserHero?Name=${_name}&HeroClass=${_heroClass}`, {});
+    return this.http.post(this.baseUrl + `api/User/createUserHero?name=${_name}&heroClass=${_heroClass}`, {});
   }
 
   DeletePlayerHero(id:number): any {

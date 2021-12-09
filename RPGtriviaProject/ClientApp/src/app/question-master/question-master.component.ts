@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Hero } from '../../../Hero';
 import { PlayerService } from '../../../player.service';
 import { TriviaApiService } from '../../../trivia-api.service';
@@ -15,11 +16,13 @@ export class QuestionMasterComponent {
   QuestionCount: number = 1;
   villain: Villain = {} as Villain;
   currentHero: Hero = {} as Hero;
+  playerHeroes: Hero[] = [];
   battleNumber = 1;
+
   damageTaken: number = 0;
   whoDamage: string = "";
   StartingHealth: number = 0;
-
+  trogdorQuestions: number;
 
     /** QuestionMaster ctor */
   constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService) {
@@ -28,6 +31,7 @@ export class QuestionMasterComponent {
 
   ngOnInit(): void {
     this.getEasyVillain();
+    this.loadPlayerHeroes();
   }
 
   addquestion(): void {
@@ -66,8 +70,17 @@ export class QuestionMasterComponent {
     })
   }
 
-  loadCurrentHero(hero_id: number): void {
-    this.player_Service.GetCurrentHero(hero_id).subscribe((response: any) => {
+  loadPlayerHeroes(): void {
+    this.player_Service.GetPlayerHeroes().subscribe((response: any) => {
+      console.log(response);
+      this.playerHeroes = response;
+    })
+
+  }
+
+  loadCurrentHero(form: NgForm): void {
+    let id: number = form.form.value.currentHero;
+    this.player_Service.GetCurrentHero(id).subscribe((response: any) => {
       console.log(response);
       this.currentHero = response;
     })
@@ -104,5 +117,39 @@ export class QuestionMasterComponent {
         this.battleNumber = 4;
       }
     }
+  }
+
+  loadBossParameters(checkInput: boolean): void {
+   
+    if (this.villain.name == "Trogdor the Burninator") {
+      this.currentHero.heroClassNavigation.healthPoints = 1;
+      this.trogdorQuestions = 0;
+      if (checkInput == true) {
+        this.trogdorQuestions++;
+        if (this.trogdorQuestions == 3) {
+          this.villain.healthPoints = 0;
+        }
+      }
+      else {
+        this.currentHero.heroClassNavigation.healthPoints = 0;
+      }
+
+    }
+
+    else if (this.villain.name == "Justin the Gatekeeper")
+    {
+      if (checkInput == true) {
+        this.currentHero.heroClassNavigation.healthPoints = 0;
+      }
+
+      else if (checkInput == false) {
+        this.currentHero.heroClassNavigation.healthPoints = 0;
+      }
+
+    }
+
+   
+
+
   }
 }

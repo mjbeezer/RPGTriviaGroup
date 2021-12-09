@@ -18,6 +18,23 @@ namespace RPGtriviaProject.Controllers
     {   
         TriviaDBContext context = new TriviaDBContext();
 
+        [HttpGet("registerUser")]
+        public Players registerUser(string user_Name, int avatar_Image, string avatar_Color, int title)
+        {
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players newPlayer = new Players() { UserId = U, GamesWon = 0, UserName = user_Name, AvatarImage = avatar_Image, AvatarColor = avatar_Color, Title = title };
+            this.context.Players.Add(newPlayer);
+            this.context.SaveChanges();
+            return newPlayer;
+
+        }
+
+        [HttpGet("getImages")]
+        public List<Images> getAvatarImages()
+        {
+            return context.Images.ToList();
+        }
+
         [HttpGet("players")]
         public List<Players> playerRankings()
         {
@@ -47,12 +64,13 @@ namespace RPGtriviaProject.Controllers
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
         }
 
-        [HttpGet("heroById/${id}")]
+        [HttpGet("heroById/{id}")]
         public Heroes getPlayerHero(int id)
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
-            Heroes currentHero = result.Heroes.First(H => H.Id == id);
+            //Heroes currentHero = result.Heroes.Include(H => H.HeroClassNavigation).First(H => H.Id == id);
+            Heroes currentHero = context.Heroes.Where(H => H.UserId == result.Id && H.Id == id).Include(H => H.HeroClassNavigation).First();
             return currentHero;
         }
 
@@ -62,7 +80,6 @@ namespace RPGtriviaProject.Controllers
         public Heroes addHero(string name, int heroClass)
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //add authorization to front end for loggen in users to add events
             int ID = context.Players.ToList().Find(P => P.UserId == U).Id;
             Heroes newHero = new Heroes() { Name = name, HeroClass = heroClass, UserId = ID};
             this.context.Heroes.Add(newHero);
@@ -91,7 +108,7 @@ namespace RPGtriviaProject.Controllers
 
         }
 
-
+        
              
 
 
