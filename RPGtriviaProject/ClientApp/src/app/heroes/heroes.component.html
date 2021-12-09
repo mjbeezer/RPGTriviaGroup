@@ -1,10 +1,16 @@
-<div *ngFor="let H of heroList">
-  <img src="{{ H.imageNavigation.imageName }}" />
-  <p>
-    HP:{{ H.healthPoints }} Class: {{ H.class }} Ability: {{ H.ability }}
-  </p>
-  <p>
-    Bio: {{ H.bio }}
-  </p>
-
+<div *ngFor="let H of heroList" >
+  <div class="card" style="outline: auto; background-color: #E0C097;">
+    <img src="{{ H.imageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097" />
+    <div class="card" style="outline: auto; text-align:center">
+      
+      <h3>{{ H.class }}</h3>
+      <h3>HP:{{ H.healthPoints }}</h3>
+      <h3>Ability: {{ H.ability }}</h3>
+    </div>
+    <p class="card" style="outline: auto">
+      Bio: {{ H.bio }}
+    </p>
+  </div>
+  <br />
+  <br />
 </div>

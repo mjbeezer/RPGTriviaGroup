@@ -1,11 +1,11 @@
-<div>
+<div class="container d-flex justify-content-center" style="padding: 0.2rem">
   <p>{{ result.question }}</p>
 </div>
-<div>
+<div class="btn btn-secondary" style="outline:auto; outline-color:black">
   <label for="option1">{{ result.correct_answer }}</label>
   <input [(ngModel)]="input" type="radio" name="input" id="option1" value="{{ result.correct_answer }}" />
 </div>
-<div *ngFor="let r of result.incorrect_answers">
+<div *ngFor="let r of result.incorrect_answers" class="btn btn-secondary"style="outline: auto; outline-color: black">
   <label for="{{ r }}">{{ r }}</label>
   <input [(ngModel)]="input" type="radio" name="input" id="{{ r }}" value="{{ r }}" />
 </div>

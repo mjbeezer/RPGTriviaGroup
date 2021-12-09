@@ -16,6 +16,10 @@ export class QuestionMasterComponent {
   villain: Villain = {} as Villain;
   currentHero: Hero = {} as Hero;
   battleNumber = 1;
+  damageTaken: number = 0;
+  whoDamage: string = "";
+  StartingHealth: number = 0;
+
 
     /** QuestionMaster ctor */
   constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService) {
@@ -34,6 +38,7 @@ export class QuestionMasterComponent {
     this.trivia_Service.getEasyVillain().subscribe((response: any) => {
       console.log(response);
       this.villain = response;
+      this.StartingHealth = this.villain.healthPoints;
     })
   }
 
@@ -41,6 +46,7 @@ export class QuestionMasterComponent {
     this.trivia_Service.getMediumVillain().subscribe((response: any) => {
       console.log(response);
       this.villain = response;
+      this.StartingHealth = this.villain.healthPoints;
     })
   }
 
@@ -48,6 +54,7 @@ export class QuestionMasterComponent {
     this.trivia_Service.getHardVillain().subscribe((response: any) => {
       console.log(response);
       this.villain = response;
+      this.StartingHealth = this.villain.healthPoints;
     })
   }
 
@@ -55,6 +62,7 @@ export class QuestionMasterComponent {
     this.trivia_Service.getBossVillain().subscribe((response: any) => {
       console.log(response);
       this.villain = response;
+      this.StartingHealth = this.villain.healthPoints;
     })
   }
 
@@ -69,9 +77,13 @@ export class QuestionMasterComponent {
     console.log(checkInput);
     if (checkInput == true) {
       this.villain.healthPoints -= 2;
+      this.whoDamage = this.villain.name;
+      this.damageTaken = 2;
     }
     else {
       this.currentHero.heroClassNavigation.healthPoints -= 2;
+      this.whoDamage = this.currentHero.name;
+      this.damageTaken = 2;
     }
     this.addquestion();
     this.loadNextRound();
