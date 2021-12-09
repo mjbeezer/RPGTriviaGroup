@@ -6,6 +6,7 @@ export interface Villain {
   type: string;
   ability: string;
   image: Images;
+  imageNavigation: Images;
 }
 
 export interface Images {
