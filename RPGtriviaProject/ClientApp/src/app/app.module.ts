@@ -47,7 +47,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
       { path: 'heroes', component: HeroesComponent },
       { path: 'players', component: PlayersComponent },
       { path: 'createhero', component: CreateHeroComponent },
-      { path: 'register', component:RegisterNewUserComponent}
+      { path: 'register', component: RegisterNewUserComponent },
+      { path: 'profile', component: UserprofileComponent }
 
     ])
   ],

@@ -6,9 +6,9 @@ import { TriviaApiService } from '../../../trivia-api.service';
 import { Villain } from '../../../Villain';
 
 @Component({
-    selector: 'app-question-master',
-    templateUrl: './question-master.component.html',
-    styleUrls: ['./question-master.component.css']
+  selector: 'app-question-master',
+  templateUrl: './question-master.component.html',
+  styleUrls: ['./question-master.component.css']
 })
 /** QuestionMaster component*/
 export class QuestionMasterComponent {
@@ -23,8 +23,10 @@ export class QuestionMasterComponent {
   whoDamage: string = "";
   StartingHealth: number = 0;
   trogdorQuestions: number;
+  usedAbility: boolean = false;
+  chosenHero: boolean = false;
 
-    /** QuestionMaster ctor */
+  /** QuestionMaster ctor */
   constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService) {
 
   }
@@ -79,6 +81,7 @@ export class QuestionMasterComponent {
   }
 
   loadCurrentHero(form: NgForm): void {
+    this.chosenHero = true;
     let id: number = form.form.value.currentHero;
     this.player_Service.GetCurrentHero(id).subscribe((response: any) => {
       console.log(response);
@@ -90,7 +93,7 @@ export class QuestionMasterComponent {
     console.log(checkInput);
 
     if (checkInput == true) {
-      this.damageRoll = Math.floor(Math.random() * 3) +1;
+      this.damageRoll = Math.floor(Math.random() * 3) + 1;
       if (this.currentHero.heroClass == 7 && this.damageRoll == 3) {
         this.damageTaken = this.damageRoll + 2;
         this.villain.healthPoints -= this.damageTaken;
@@ -101,7 +104,7 @@ export class QuestionMasterComponent {
         this.damageTaken = this.damageRoll;
         this.villain.healthPoints -= this.damageTaken;
         this.whoDamage = this.villain.name;
-        
+
       }
     }
     else {
@@ -114,7 +117,7 @@ export class QuestionMasterComponent {
   }
 
   loadNextRound(): void {
-    if (this.villain.healthPoints <= 0) {      
+    if (this.villain.healthPoints <= 0) {
       if (this.battleNumber == 1) {
         this.getMediumVillain();
         this.battleNumber = 2;
@@ -131,7 +134,7 @@ export class QuestionMasterComponent {
   }
 
   loadBossParameters(checkInput: boolean): void {
-   
+
     if (this.villain.name == "Trogdor the Burninator") {
       this.currentHero.heroClassNavigation.healthPoints = 1;
       this.trogdorQuestions = 0;
@@ -147,8 +150,7 @@ export class QuestionMasterComponent {
 
     }
 
-    else if (this.villain.name == "Justin the Gatekeeper")
-    {
+    else if (this.villain.name == "Justin the Gatekeeper") {
       if (checkInput == true) {
         this.currentHero.heroClassNavigation.healthPoints = 0;
       }
@@ -159,8 +161,39 @@ export class QuestionMasterComponent {
 
     }
 
-   
-
 
   }
+
+  wizardAbility(): void {
+
+    this.usedAbility = true;
+    this.addquestion();
+      //if (this.villain.type == "Easy") {
+        
+      //  this.trivia_Service.getEasyQuestions().subscribe((response: any) => {
+      //    console.log(response);
+      //  })
+      //    }
+
+      //else if (this.villain.type == "Medium") {
+      //  this.trivia_Service.getMediumQuestions().subscribe((response: any) => {
+      //    console.log(response);
+
+      //  })
+      //      }
+
+      //else if (this.villain.type == "Hard") {
+
+      //  this.trivia_Service.getHardQuestions().subscribe((response: any) => {
+      //    console.log(response);
+
+      //  })
+
+      //}
+
+
+    }
+  
 }
+
+

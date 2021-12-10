@@ -25,9 +25,17 @@ export class UserprofileComponent {
   }
 
   ngOnInit(): void {
+    this.getPlayer();
+    this.getPlayerHeroes();
 
   }
-
+  getPlayer(): any {
+    this.player_Service.GetCurrentPlayer().subscribe((response: any) => {
+      this.currentPlayer = response;
+      console.log(response);
+      console.log(response.avatarImageNavigation.imageName);
+    })
+  }
   getPlayerHeroes(): any {
     this.player_Service.GetPlayerHeroes().subscribe((response: any) => {
       this.playerHeroes = response;

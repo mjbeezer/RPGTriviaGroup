@@ -47,4 +47,8 @@ export class PlayerService {
   DeletePlayerProfile(id: number): any {
     return this.http.delete(this.baseUrl + `api/User/deletePlayer/${id}`);
   }
+
+  GetCurrentPlayer(): any {
+    return this.http.get(this.baseUrl + `api/User/currentPlayer`);
+  }
 }

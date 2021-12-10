@@ -23,16 +23,16 @@
 
  </div>-->
 
+<div *ngIf="chosenHero == false">
+  <div *ngFor="let P of playerHeroes">
+    <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
+      <label for="currentHero"> {{P.name}} </label>
+      <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
 
-<div *ngFor="let P of playerHeroes">
-  <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
-  <label for="currentHero"> {{P.name}} </label>
-  <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
-
-  <input type="submit" (click)="loadCurrentHero" value="Select Hero" />
+      <input type="submit" value="Select Hero" />
     </form>
+  </div>
 </div>
-
 
 
 <!--<div ngIf="currentHero != null">-->
@@ -49,3 +49,10 @@
   <p>{{ currentHero.heroClassNavigation.healthPoints }}</p>
 </div>
 
+<div *ngIf="currentHero.heroClass == 5 && usedAbility == false">
+
+  <button (click)="wizardAbility()">Skip Question </button>
+
+
+
+</div>
