@@ -38,7 +38,8 @@ namespace RPGtriviaProject.Controllers
         [HttpGet("players")]
         public List<Players> playerRankings()
         {
-            return context.Players.OrderByDescending(x => x.GamesWon).ToList();
+            //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
+            return context.Players.Include(P => P.AvatarImageNavigation).Include(P => P.TitleNavigation).OrderByDescending(x => x.GamesWon).ToList();
 
         }
 
@@ -65,7 +66,7 @@ namespace RPGtriviaProject.Controllers
 
             //UserId matches long string of gibberish. Need to return all heroes of given player
 
-            Players result = context.Players.Where(P => P.UserId == U).Include("Heroes.HeroClassNavigation").First();
+            Players result = context.Players.Where(P => P.UserId == U).Include("Heroes.HeroClassNavigation.ImageNavigation").First();
             return result.Heroes.ToList();
 
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();

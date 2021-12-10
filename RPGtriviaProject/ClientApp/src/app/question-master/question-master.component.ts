@@ -25,7 +25,7 @@ export class QuestionMasterComponent {
   trogdorQuestions: number;
   usedAbility: boolean = false;
   chosenHero: boolean = false;
-
+  iAmAlive: boolean = true;
   /** QuestionMaster ctor */
   constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService) {
 
@@ -113,10 +113,11 @@ export class QuestionMasterComponent {
       this.damageTaken = 2;
     }
     this.addquestion();
-    this.loadNextRound();
+    this.villainHealthCheck();
+    this.heroHealthCheck();
   }
 
-  loadNextRound(): void {
+  villainHealthCheck(): void {
     if (this.villain.healthPoints <= 0) {
       if (this.battleNumber == 1) {
         this.getMediumVillain();
@@ -130,6 +131,13 @@ export class QuestionMasterComponent {
         this.getBossVillain();
         this.battleNumber = 4;
       }
+    }
+
+  }
+
+  heroHealthCheck(): void {
+    if (this.currentHero.heroClassNavigation.healthPoints == 0) {
+      this.iAmAlive = false;
     }
   }
 
