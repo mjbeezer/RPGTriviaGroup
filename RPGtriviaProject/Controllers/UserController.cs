@@ -15,7 +15,7 @@ namespace RPGtriviaProject.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
-    {   
+    {
         TriviaDBContext context = new TriviaDBContext();
 
         [HttpGet("registerUser")]
@@ -39,7 +39,7 @@ namespace RPGtriviaProject.Controllers
         public List<Players> playerRankings()
         {
             return context.Players.OrderByDescending(x => x.GamesWon).ToList();
-            
+
         }
 
         [HttpGet("players/{id}")]
@@ -49,6 +49,13 @@ namespace RPGtriviaProject.Controllers
 
 
         }
+        [HttpGet("currentPlayer")]
+        public Players getCurrentPlayer()
+        {
+        string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.AvatarImageNavigation).First();
+            return result;
+    }
         
         [HttpGet("allUserHeroes")]
         public List<Heroes> displayAllUserHeroes()
@@ -58,7 +65,7 @@ namespace RPGtriviaProject.Controllers
 
             //UserId matches long string of gibberish. Need to return all heroes of given player
 
-            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
+            Players result = context.Players.Where(P => P.UserId == U).Include("Heroes.HeroClassNavigation").First();
             return result.Heroes.ToList();
 
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
@@ -107,7 +114,7 @@ namespace RPGtriviaProject.Controllers
             context.SaveChanges();
             return result;
         }
-            [HttpPatch("updateUserTitle")]
+         [HttpPatch("updateUserTitle")]
         public Players updateUserTitle(int id, int title)
         {   
             Players result = context.Players.Find(id);
