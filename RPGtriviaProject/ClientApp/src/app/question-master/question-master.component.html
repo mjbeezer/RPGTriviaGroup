@@ -36,6 +36,7 @@
 
 
 <!--<div ngIf="currentHero != null">-->
+<div *ngIf="iAmAlive == true">
 <div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1"></app-trivia></div>
 
 <div>
@@ -47,6 +48,7 @@
 <div *ngIf="currentHero != null">
   <p>{{ currentHero.name }}</p>
   <p>{{ currentHero.heroClassNavigation.healthPoints }}</p>
+ 
 </div>
 
 <div *ngIf="currentHero.heroClass == 5 && usedAbility == false">
@@ -55,4 +57,8 @@
 
 
 
+</div>
+  </div>
+<div *ngIf="iAmAlive == false">
+  <p>Game Over! Your quest for knowledge has ended. </p>
 </div>
