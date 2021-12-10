@@ -1,26 +1,28 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Hero } from '../../../Hero';
 import { HeroService } from '../../../hero.service';
 import { Player } from '../../../Player';
 import { PlayerService } from '../../../player.service';
 
 @Component({
-    selector: 'app-userprofile',
-    templateUrl: './userprofile.component.html',
-    styleUrls: ['./userprofile.component.css']
+  selector: 'app-userprofile',
+  templateUrl: './userprofile.component.html',
+  styleUrls: ['./userprofile.component.css']
 })
 /** userprofile component*/
 export class UserprofileComponent {
 
-  
+
   deleteHero: Hero = {} as Hero;
   currentHero: Hero = {} as Hero;
   playerHeroes: Hero[] = [];
   currentPlayer: Player = {} as Player;
 
-    /** userprofile ctor */
-  constructor(private hero_Service:HeroService, private player_Service:PlayerService) {
+  /** userprofile ctor */
+  constructor(private hero_Service: HeroService, private player_Service: PlayerService) {
 
   }
 
@@ -50,17 +52,21 @@ export class UserprofileComponent {
     })
   }
 
-  deletePlayerHero(hero_Id:number): any {
+  deletePlayerHero(hero_Id: number): any {
     this.player_Service.DeletePlayerHero(hero_Id).subscribe((response: any) => {
       this.deleteHero = response;
       console.log(response);
     })
   }
 
-  updatePlayerTitle(title_Id: number): any {
-    this.player_Service.UpdatePlayerTitle(title_Id).subscribe((response: any) => {
-      this.currentPlayer = response.title;
-      console.log(this.currentPlayer);
+  updatePlayerTitle(form: NgForm): any {
+
+    let titleId: number = form.form.value.titleId;
+    console.log(titleId);
+
+    this.player_Service.UpdatePlayerTitle(titleId).subscribe((response: any) => {
+      this.currentPlayer.title = response.title;
+      console.log(response.title);
     })
   }
 

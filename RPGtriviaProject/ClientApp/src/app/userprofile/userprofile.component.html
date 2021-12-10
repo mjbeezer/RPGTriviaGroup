@@ -1,7 +1,56 @@
-<h1> <img src="{{ currentPlayer.avatarImageNavigation.imageName }}" /> {{ currentPlayer.userName }} {{ currentPlayer.title }} {{currentPlayer.gamesWon}}</h1>
+<h1> <img src="{{ currentPlayer.avatarImageNavigation.imageName }}" /> {{ currentPlayer.userName }} {{ currentPlayer.titleNavigation.title1 }} {{currentPlayer.gamesWon}}</h1>
 <div *ngFor="let H of playerHeroes">
 
- <p> {{ H.name }} {{ H.heroClass.class }} </p>
+  <p> {{ H.name }} {{ H.heroClass.class }} </p>
 
 
+</div>
+<div>
+  <h6>Change Title</h6>
+  <form #updateTitleForm="ngForm" (ngSubmit)="updatePlayerTitle(updateTitleForm)">
+    <label for="userTitle">Newbie</label><br />
+    <input name="titleId" id="userTitle1" type="radio" ngModel value="1" /><br />
+
+    <label for="userTitle2">Weakling</label><br />
+    <div *ngIf="currentPlayer.gamesWon >= 5">
+      <input name="titleId" id="userTitle2" type="radio" ngModel value="2" /><br />
+    </div>
+    <div *ngIf="currentPlayer.gamesWon < 5">
+      <p id="userTitle2">Unlock this Title after winning 5 games!</p>
+    </div>
+
+    <label for="userTitle3">The Basic One</label><br />
+    <div *ngIf="currentPlayer.gamesWon >= 10">
+      <input name="titleId" id="userTitle3" type="radio" ngModel value="3" /><br />
+    </div>
+    <div *ngIf="currentPlayer.gamesWon < 10">
+      <p id="userTitle3">Unlock this Title after winning 10 games!</p>
+    </div>
+
+    <label for="userTitle4">Oversized Cucumber</label><br />
+    <div *ngIf="currentPlayer.gamesWon >= 15">
+      <input name="titleId" id="userTitle4" type="radio" ngModel value="4" /><br />
+    </div>
+    <div *ngIf="currentPlayer.gamesWon < 15">
+      <p id="userTitle4">Unlock this Title after winning 15 games!</p>
+    </div>
+
+    <label for="userTitle5">The Porckchop</label><br />
+    <div *ngIf="currentPlayer.gamesWon >= 20">
+      <input name="titleId" id="userTitle5" type="radio" ngModel value="5" /><br />
+    </div>
+    <div *ngIf="currentPlayer.gamesWon < 20">
+      <p id="userTitle5">Unlock this Title after winning 20 games!</p>
+    </div>
+
+    <label for="userTitle6">The Nerd King</label><br />
+    <div *ngIf="currentPlayer.gamesWon >= 25">
+      <input name="titleId" id="userTitle6" type="radio" ngModel value="6" /><br />
+    </div>
+    <div *ngIf="currentPlayer.gamesWon < 25">
+      <p id="userTitle6">Unlock this Title after winning 25 games!</p>
+    </div>
+
+    <input type="submit" value="Change Title" />
+  </form>
 </div>

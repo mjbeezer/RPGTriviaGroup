@@ -41,6 +41,7 @@ namespace RPGtriviaProject.Controllers
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
             return context.Players.Include(P => P.AvatarImageNavigation).Include(P => P.TitleNavigation).OrderByDescending(x => x.GamesWon).ToList();
 
+
         }
 
         [HttpGet("players/{id}")]
@@ -53,11 +54,11 @@ namespace RPGtriviaProject.Controllers
         [HttpGet("currentPlayer")]
         public Players getCurrentPlayer()
         {
-        string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.AvatarImageNavigation).First();
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.AvatarImageNavigation).Include(P => P.TitleNavigation).First();
             return result;
-    }
-        
+        }
+
         [HttpGet("allUserHeroes")]
         public List<Heroes> displayAllUserHeroes()
         {
@@ -84,12 +85,12 @@ namespace RPGtriviaProject.Controllers
 
 
         [HttpPost("createUserHero")]
-       
+
         public Heroes addHero(string name, int heroClass)
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             int ID = context.Players.ToList().Find(P => P.UserId == U).Id;
-            Heroes newHero = new Heroes() { Name = name, HeroClass = heroClass, UserId = ID};
+            Heroes newHero = new Heroes() { Name = name, HeroClass = heroClass, UserId = ID };
             this.context.Heroes.Add(newHero);
             this.context.SaveChanges();
             return newHero;
@@ -115,22 +116,16 @@ namespace RPGtriviaProject.Controllers
             context.SaveChanges();
             return result;
         }
-         [HttpPatch("updateUserTitle")]
-        public Players updateUserTitle(int id, int title)
-        {   
-            Players result = context.Players.Find(id);
+
+        [HttpPatch("updateUserTitle")]
+        public Players updateUserTitle(int title)
+        {
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.TitleNavigation).First();
             result.Title = title;
             this.context.SaveChanges();
             return result;
 
         }
-
-        
-             
-
-
-
-
-
     }
 }

@@ -9,7 +9,7 @@ export class PlayerService {
 
   }
 
-  RegisterNewPlayer(user_Name:string, avatar_Image:number, avatar_Color:string, title:number ): any {
+  RegisterNewPlayer(user_Name: string, avatar_Image: number, avatar_Color: string, title: number): any {
     return this.http.get(this.baseUrl + `api/User/registerUser?user_Name=${user_Name}&avatar_Image=${avatar_Image}&avatar_Color=${avatar_Color}&Title=${title}`);
   }
 
@@ -29,20 +29,20 @@ export class PlayerService {
     return this.http.get(this.baseUrl + `api/User/allUserHeroes`);
   }
 
-  GetCurrentHero(id:number): any {
+  GetCurrentHero(id: number): any {
     return this.http.get(this.baseUrl + `api/User/heroById/${id}`);
   }
 
-  CreatePlayerHero(_name:string, _heroClass:number ): any {
+  CreatePlayerHero(_name: string, _heroClass: number): any {
     return this.http.post(this.baseUrl + `api/User/createUserHero?name=${_name}&heroClass=${_heroClass}`, {});
   }
 
-  DeletePlayerHero(id:number): any {
+  DeletePlayerHero(id: number): any {
     return this.http.delete(this.baseUrl + `api/User/deleteUserHero/${id}`);
   }
 
   UpdatePlayerTitle(id: number): any {
-    return this.http.patch(this.baseUrl + `api/User/updateUserTitle`, {});
+    return this.http.patch(this.baseUrl + `api/User/updateUserTitle?title=${id}`, {});
   }
   DeletePlayerProfile(id: number): any {
     return this.http.delete(this.baseUrl + `api/User/deletePlayer/${id}`);
