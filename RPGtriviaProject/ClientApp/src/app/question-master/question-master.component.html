@@ -60,5 +60,10 @@
 </div>
   </div>
 <div *ngIf="iAmAlive == false">
-  <p>Game Over! Your quest for knowledge has ended. </p>
+  <div *ngIf="beatGame == true">
+    <p>You have defeated the evil villain and gained the knowledge you seek. Congratulations!!</p>
+  </div>
+  <div *ngIf="beatGame == false">
+    <p>Game Over! Your quest for knowledge has ended. </p>
+  </div>  
 </div>

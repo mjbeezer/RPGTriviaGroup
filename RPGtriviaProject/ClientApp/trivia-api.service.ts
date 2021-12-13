@@ -7,7 +7,7 @@ import { Inject, Injectable } from '@angular/core';
 export class TriviaApiService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
 
-    }
+  }
 
   getEasyQuestions(): any {
     return this.http.get('https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple');

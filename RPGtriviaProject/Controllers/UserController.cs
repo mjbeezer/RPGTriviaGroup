@@ -127,5 +127,15 @@ namespace RPGtriviaProject.Controllers
             return result;
 
         }
+
+        [HttpPatch("updateGamesWon")]
+        public Players updateGamesWon()
+        {
+            string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Players result = context.Players.Where(P => P.UserId == U).First();
+            result.GamesWon++;
+            this.context.SaveChanges();
+            return result;
+        }
     }
 }
