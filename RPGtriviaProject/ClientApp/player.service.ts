@@ -51,4 +51,8 @@ export class PlayerService {
   GetCurrentPlayer(): any {
     return this.http.get(this.baseUrl + `api/User/currentPlayer`);
   }
+
+  UpdateGamesWon(): any {
+    return this.http.patch(this.baseUrl + `api/User/updateGamesWon`, {});
+  }
 }
