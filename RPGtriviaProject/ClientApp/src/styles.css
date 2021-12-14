@@ -29,10 +29,12 @@ code {
 
 .bg {
   background-image: url("https://i.postimg.cc/MHDztpkH/download-2.jpg");
-  height: 1000px;
+  height: 500px;
   width: 1115px;
   background-size: cover;
   outline:auto;
+  background-position: 100% 30%;
+  padding: 10%;
 }
 
 .bg-color {
@@ -52,4 +54,8 @@ code {
   background-size: unset;
   background-repeat: repeat;
   text-align:center;
+}
+
+.textcolor {
+  color:burlywood;
 }

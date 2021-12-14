@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Hero } from '../../../Hero';
 import { Player } from '../../../Player';
 import { PlayerService } from '../../../player.service';
@@ -32,13 +33,14 @@ export class QuestionMasterComponent {
   beatGame: boolean = false;
 
   /** QuestionMaster ctor */
-  constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService) {
+  constructor(private trivia_Service: TriviaApiService, private player_Service: PlayerService, private route:ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
     this.getEasyVillain();
-    this.loadPlayerHeroes();
+    //this.loadPlayerHeroes();
+    this.loadSelectedHero();
   }
 
   addquestion(): void {
@@ -85,10 +87,10 @@ export class QuestionMasterComponent {
 
   }
 
-  loadCurrentHero(form: NgForm): void {
+  loadSelectedHero(): void {
     this.chosenHero = true;
-    let id: number = form.form.value.currentHero;
-    this.player_Service.GetCurrentHero(id).subscribe((response: any) => {
+    let id: string = this.route.snapshot.paramMap.get("id");
+    this.player_Service.GetCurrentHero(parseInt(id)).subscribe((response: any) => {
       console.log(response);
       this.currentHero = response;
     })

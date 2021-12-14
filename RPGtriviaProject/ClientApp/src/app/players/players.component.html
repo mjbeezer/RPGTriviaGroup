@@ -5,9 +5,11 @@
   <img src="{{ P.ImageName }}">
 </div>-->
 
-<div *ngFor="let P of playerList">
-  <p> {{ P.userName }}</p>
-  <p>{{ P.gamesWon }}</p>
-  <p>{{ P.titleNavigation.title1 }}</p>
-  <img src="{{ P.avatarImageNavigation.imageName }}">
+<div class="textcolor" *ngFor="let P of playerList">
+  <div class="container">
+    <img src="{{ P.avatarImageNavigation.imageName }}">
+    <p>User: {{ P.userName }}</p>
+    <p>Games Won: {{ P.gamesWon }}</p>
+    <p>Title: {{ P.titleNavigation.title1 }}</p>
+  </div>
 </div>
