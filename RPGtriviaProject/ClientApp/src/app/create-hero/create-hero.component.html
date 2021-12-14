@@ -1,4 +1,4 @@
-<div>
+<div class="textcolor">
   <form #createHeroForm="ngForm" (ngSubmit)="createHero(createHeroForm)">
     <h3>Create Hero</h3><br />
 
@@ -7,13 +7,13 @@
 
     <p>Choose a Class</p>
     <label for="wizard">Wizard</label>
-    <input name="class" id="Wizard" type="radio" ngModel required value="5" />
+    <input name="class" id="Wizard" type="radio" ngModel required value="5" /><br />
 
     <label for="Knight">Knight</label>
-    <input name="class" id="Knight" type="radio" ngModel required value="6" />
+    <input name="class" id="Knight" type="radio" ngModel required value="6" /><br />
 
     <label for="Rogue">Rogue</label>
-    <input name="class" id="Rogue" type="radio" ngModel required value="7" />
+    <input name="class" id="Rogue" type="radio" ngModel required value="7" /><br />
     <input type="submit" value="create hero" />
   </form>
 </div>

@@ -18,6 +18,7 @@ import { PlayersComponent } from './players/players.component';
 import { CreateHeroComponent } from './create-hero/create-hero.component';
 import { RegisterNewUserComponent } from './register-new-user/register-new-user.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { SelectHeroComponent } from './select-hero/select-hero.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     PlayersComponent,
     CreateHeroComponent,
     RegisterNewUserComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    SelectHeroComponent
     
   ],
   imports: [
@@ -42,13 +44,14 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'questions', component: QuestionMasterComponent },
+      { path: 'questions/:id', component: QuestionMasterComponent },
       { path: 'villains', component: VillainComponent },
       { path: 'heroes', component: HeroesComponent },
       { path: 'players', component: PlayersComponent },
       { path: 'createhero', component: CreateHeroComponent },
       { path: 'register', component: RegisterNewUserComponent },
-      { path: 'profile', component: UserprofileComponent }
+      { path: 'profile', component: UserprofileComponent },
+      { path: 'selecthero', component: SelectHeroComponent}
 
     ])
   ],

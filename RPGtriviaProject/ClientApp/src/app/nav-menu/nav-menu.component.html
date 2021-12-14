@@ -3,7 +3,7 @@
     class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-white border-bottom box-shadow mb-3; header"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">RPGtriviaProject</a>
+      <a class="navbar-brand" [routerLink]="['/']"></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -24,7 +24,7 @@
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link text-dark" [routerLink]="['/']">Knowledge Quest</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/heroes']">Playable Heroes</a>
@@ -45,7 +45,7 @@
             <a class="nav-link text-dark" [routerLink]="['/profile']">My Profile</a>
 
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/questions']">Start Game</a>
+            <a class="nav-link text-dark" [routerLink]="['/selecthero']">Start Game</a>
           </li>
         </ul>
       </div>

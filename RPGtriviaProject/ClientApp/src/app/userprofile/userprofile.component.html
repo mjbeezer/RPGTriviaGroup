@@ -1,12 +1,19 @@
-<h1> <img src="{{ currentPlayer.avatarImageNavigation.imageName }}" /> {{ currentPlayer.userName }} {{ currentPlayer.titleNavigation.title1 }} {{currentPlayer.gamesWon}}</h1>
-<div *ngFor="let H of playerHeroes">
-
-  <p> {{ H.name }} {{ H.heroClass.class }} </p>
-
-
-</div>
+<h1 class="textcolor"> <img src="{{ currentPlayer.avatarImageNavigation.imageName }}" /></h1>
+<h4 class="textcolor">UserName: {{ currentPlayer.userName }}</h4>
+<h5 class="textcolor">Title: {{ currentPlayer.titleNavigation.title1 }}</h5>
+<h5 class="textcolor">Games Won: {{currentPlayer.gamesWon}}</h5>
 <div>
-  <h6>Change Title</h6>
+  <button type="submit" (click)="deletePlayerProfile()">Delete Profile</button>
+</div><br />
+
+<h4 class="textcolor">Available Heroes</h4>
+<div class="textcolor" *ngFor="let H of playerHeroes">
+  <p> Hero Name: {{ H.name }}</p>
+  <p>Hero Class: {{ H.heroClassNavigation.class }}</p><br />
+</div>
+
+<div class="textcolor">
+  <h4>Change Title</h4>
   <form #updateTitleForm="ngForm" (ngSubmit)="updatePlayerTitle(updateTitleForm)">
     <label for="userTitle">Newbie</label><br />
     <input name="titleId" id="userTitle1" type="radio" ngModel value="1" /><br />

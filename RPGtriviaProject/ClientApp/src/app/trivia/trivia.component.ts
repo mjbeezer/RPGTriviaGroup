@@ -65,7 +65,7 @@ export class TriviaComponent {
       this.result = response.results[0];
       this.input = response.results[0].correct_answer;
     })
-  }    
+  }  
 
   inputCheck(): void {
     console.log(this.input);
