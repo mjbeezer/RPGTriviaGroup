@@ -1,64 +1,39 @@
 
-<div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1" class="card" style="background-color: #E0C097; padding: 0.2rem"></app-trivia></div>
-<div *ngIf="battleNumber < 4">
-  <div class="bg">
-    <div style="text-align:end;padding:initial">
-      <p>{{ villain.name }}</p>
-      <p>{{ currentHero.name }}</p>
-    </div>
-    <div class="row">
-    </div>
-    <div class="row">
-      <img src="{{ currentHero.heroClassNavigation.image }}" class="col-3" />
-      <p class="col-6"></p>
-      <img src="{{ villain.imageNavigation.imageName }}" class="col-3" />
-    </div>
-  </div>
-</div>
-
-=======
- <!--<div *ngIf="playerHeroes == []">
-   <p>You do not have any heroes coward. </p>
-   <button [routerLink]="['/createhero']"> Create Hero</button>
-
- </div>-->
-
-<!--<div *ngIf="chosenHero == false">
-  <div *ngFor="let P of playerHeroes">
-    <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
-      <label for="currentHero"> {{P.name}} </label>
-      <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
-
-      <input type="submit" value="Select Hero" />
-    </form>
-  </div>
-</div>-->
-
-
-<!--<div ngIf="currentHero != null">-->
 <div *ngIf="iAmAlive == true">
-<div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1"></app-trivia></div>
+  <div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1" class="card" style="background-color: #E0C097; padding: 0.2rem"></app-trivia></div>
+  <div *ngIf="battleNumber < 4">
+    <div class="bg">
+      <div style="text-align:end;padding:initial">
+        <p>{{ villain.name }} :: {{ villain.race }}</p>
+        <p> Health Points: {{ villain.healthPoints }}</p>
+      </div>
 
-<div>
-  <p>{{ villain.name }} :: {{ villain.race }}</p>
-  <p>{{ villain.healthPoints }}</p>
-  <img src="{{ villain.imageNavigation.imageName }} }}" />
-</div>
+      <div style="text-align:start;padding:initial">
+        <p>{{ currentHero.name }}</p>
+        <p> Health Points: {{ currentHero.heroClassNavigation.healthPoints }} </p>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <img src="{{ currentHero.heroClassNavigation.imageNavigation.imageName }}" class="col-3" />
 
-<div *ngIf="currentHero != null">
-  <p>{{ currentHero.name }}</p>
-  <p>{{ currentHero.heroClassNavigation.healthPoints }}</p>
+        <p class="col-6"></p>
+        <img src="{{ villain.imageNavigation.imageName }}" class="col-3" />
+      </div>
+      <div *ngIf="currentHero.heroClass == 5 && usedAbility == false">
+
+        <button (click)="wizardAbility()">Skip Question </button>
+
+      </div>
+    </div>
  
-</div>
-
-<div *ngIf="currentHero.heroClass == 5 && usedAbility == false">
-
-  <button (click)="wizardAbility()">Skip Question </button>
-
-
-
-</div>
   </div>
+  
+
+
+
+</div>
+
 <div *ngIf="iAmAlive == false">
   <div *ngIf="beatGame == true">
     <p>You have defeated the evil villain and gained the knowledge you seek. Congratulations!!</p>

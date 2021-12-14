@@ -2,14 +2,27 @@
   <p [innerHTML]="result.question"></p>
 </div>
 <div class="btn btn-secondary" style="outline:auto; outline-color:black">
+  <div *ngFor="let r of shuffledAnswers">
+    <label for="{{ r }}" [innerHTML]="r"></label>
+    <input [(ngModel)]="input" type="radio" name="input" id="{{ r }}" value="{{ r }}" />
+
+  </div>
+</div>
+<button (click)="inputCheck()">Submit Answer</button>
+<!--<div class="btn btn-secondary" style="outline:auto; outline-color:black">
   <label for="option1" [innerHTML]="result.correct_answer"></label>
   <input [(ngModel)]="input" type="radio" name="input" id="option1" value="{{ result.correct_answer }}" />
 </div>
 <div *ngFor="let r of result.incorrect_answers" class="btn btn-secondary"style="outline: auto; outline-color: black">
   <label for="{{ r }}" [innerHTML]="r"></label>
   <input [(ngModel)]="input" type="radio" name="input" id="{{ r }}" value="{{ r }}" />
-</div>
-<button (click)="inputCheck()">Submit Answer</button>
+</div>-->
+
+
+
+
+
+
 
 
 
@@ -26,9 +39,10 @@
 
 
 <!--<div *ngIf="battleNumber<4">-->
-  <!--<div--> <!--style="background-image: url('https://postimg.cc/0zqhJkpH/2f581e25')"--><!-->
-    <p>{{ result.question }}</p>
-  </div>-->
+<!--<div--> <!--style="background-image: url('https://postimg.cc/0zqhJkpH/2f581e25')"-->
+<!-->
+  <p>{{ result.question }}</p>
+</div>-->
 <!--</div>
 <div *ngIf="battleNumber=4">
   <div style="background-image: url('https://postimg.cc/14ndCnBj/954b7ca8')">
