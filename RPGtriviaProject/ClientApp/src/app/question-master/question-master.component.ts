@@ -134,10 +134,12 @@ export class QuestionMasterComponent {
       if (this.battleNumber == 1) {
         this.getMediumVillain();
         this.battleNumber = 2;
+        this.usedAbility = false;
       }
       else if (this.battleNumber == 2) {
         this.getHardVillain();
         this.battleNumber = 3;
+        this.usedAbility = false;
       }
       else if (this.battleNumber == 3) {
         this.getBossVillain();

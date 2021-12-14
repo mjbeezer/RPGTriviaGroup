@@ -79,7 +79,7 @@ namespace RPGtriviaProject.Controllers
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             Players result = context.Players.Where(P => P.UserId == U).Include(P => P.Heroes).First();
             //Heroes currentHero = result.Heroes.Include(H => H.HeroClassNavigation).First(H => H.Id == id);
-            Heroes currentHero = context.Heroes.Where(H => H.UserId == result.Id && H.Id == id).Include(H => H.HeroClassNavigation).First();
+            Heroes currentHero = context.Heroes.Where(H => H.UserId == result.Id && H.Id == id).Include(H => H.HeroClassNavigation.ImageNavigation).First();
             return currentHero;
         }
 

@@ -44,14 +44,14 @@ import { SelectHeroComponent } from './select-hero/select-hero.component';
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'questions/:id', component: QuestionMasterComponent },
+      { path: 'questions/:id', component: QuestionMasterComponent, canActivate: [AuthorizeGuard] },
       { path: 'villains', component: VillainComponent },
       { path: 'heroes', component: HeroesComponent },
       { path: 'players', component: PlayersComponent },
-      { path: 'createhero', component: CreateHeroComponent },
-      { path: 'register', component: RegisterNewUserComponent },
-      { path: 'profile', component: UserprofileComponent },
-      { path: 'selecthero', component: SelectHeroComponent}
+      { path: 'createhero', component: CreateHeroComponent, canActivate: [AuthorizeGuard] },
+      { path: 'register', component: RegisterNewUserComponent, canActivate: [AuthorizeGuard] },
+      { path: 'profile', component: UserprofileComponent, canActivate: [AuthorizeGuard] },
+      { path: 'selecthero', component: SelectHeroComponent, canActivate: [AuthorizeGuard]}
 
     ])
   ],
