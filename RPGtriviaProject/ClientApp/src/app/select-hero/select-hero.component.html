@@ -1,7 +1,9 @@
-<h5>Please Select a Hero</h5>
+<br />
+<h5 class="card" style="outline: auto; background-color: #E0C097;text-align:center">Please Select a Hero</h5>
+<br />
 <div *ngIf="chosenHero == false">
   <div *ngFor="let P of playerHeroes">
-    <div class="card">
+    <div class="card" style="outline: auto; background-color: #E0C097; text-align:center">
       <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
         <label for="currentHero"> {{ P.name }} </label>
         <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
@@ -9,5 +11,6 @@
         <input type="submit" value="Select Hero" />
       </form>
     </div>
+    <br />
   </div>
 </div>

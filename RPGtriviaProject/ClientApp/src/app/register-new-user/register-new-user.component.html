@@ -7,12 +7,15 @@
     <label for="avatarImage">Choose an Avatar</label><br />
 
     <div *ngFor="let i of imageList">
-        <div class="card" style="background-color: #E0C097; width:50%">
-          <label for="avatarImage"><img src="{{ i.imageName }}" class="col-6"style=""/></label>
+
+      <div class="card" style="background-color: #E0C097; width:50%">
+        <div class="row">
           <input name="avatarImage" id="avatarImage" type="radio" ngModel value="{{ i.id }}" required /><br />
+          <label for="avatarImage"><img src="{{ i.imageName }}" class="col-6" /></label>
+        </div>
       </div>
       <br />
-  </div>
+    </div>
     <div class="card" style="background-color: #E0C097; color: black !important">
       <label for="avatarColor">Please Choose a Color From the Following Options: red, blue, green, purple, yellow, orange, black</label><br />
       <input name="avatarColor" id="avatarColor" type="text" ngModel required />
@@ -30,3 +33,5 @@
     <br />
   </form>
 </div>
+<br />
+<br />
