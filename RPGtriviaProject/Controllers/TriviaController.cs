@@ -41,7 +41,15 @@ namespace RPGtriviaProject.Controllers
         {
             Random rnd = new Random();
             Villains enemy = new Villains();
-            int villainID = rnd.Next(5, 7);
+            int villainID = rnd.Next(5, 9);
+            if(villainID == 7)
+            {
+                villainID = 9;
+            }
+            else if(villainID == 8)
+            {
+                villainID = 10;
+            }
             enemy = context.Villains.Include(V => V.ImageNavigation).ToList().Find(V => V.Id == villainID);
             return enemy;
         }
