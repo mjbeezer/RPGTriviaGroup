@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Images } from '../../../Images';
 import { Player } from '../../../Player';
 import { PlayerService } from '../../../player.service';
@@ -17,7 +18,7 @@ export class RegisterNewUserComponent {
   newbieTitle: Title = {} as Title
 
     /** registerNewUser ctor */
-    constructor(private player_Service:PlayerService) {
+    constructor(private player_Service:PlayerService, private route: Router) {
 
   }
 
@@ -42,6 +43,7 @@ export class RegisterNewUserComponent {
     this.player_Service.RegisterNewPlayer(username, avatarImage, avatarColor, 1).subscribe((response: any) => {
       console.log(response);
     })
+    this.route.navigate(["createhero"]);
   }
 
   LoadAvatarImages(): void {
@@ -49,5 +51,6 @@ export class RegisterNewUserComponent {
       this.imageList = response;
       console.log(response);
     })
+
   }
 }

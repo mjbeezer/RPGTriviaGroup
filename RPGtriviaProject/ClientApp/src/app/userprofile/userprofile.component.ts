@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Hero } from '../../../Hero';
 import { HeroService } from '../../../hero.service';
 import { Player } from '../../../Player';
@@ -22,7 +23,7 @@ export class UserprofileComponent {
   currentPlayer: Player = {} as Player;
 
   /** userprofile ctor */
-  constructor(private hero_Service: HeroService, private player_Service: PlayerService) {
+  constructor(private hero_Service: HeroService, private player_Service: PlayerService, private route: Router) {
 
   }
 
@@ -57,6 +58,7 @@ export class UserprofileComponent {
       this.deleteHero = response;
       console.log(response);
     })
+   
   }
 
   updatePlayerTitle(form: NgForm): any {
@@ -70,4 +72,11 @@ export class UserprofileComponent {
     })
   }
 
+  deletePlayerProfile(id:number): void {
+    this.player_Service.DeletePlayerProfile(id).subscribe((response: any) => {
+      this.currentPlayer = response;
+      console.log(response);
+    })
+    this.route.navigate(["register"]);
+  }
 }
