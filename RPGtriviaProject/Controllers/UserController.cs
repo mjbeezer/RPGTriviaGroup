@@ -55,8 +55,16 @@ namespace RPGtriviaProject.Controllers
         public Players getCurrentPlayer()
         {
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            Players result = context.Players.Where(P => P.UserId == U).Include(P => P.AvatarImageNavigation).Include(P => P.TitleNavigation).First();
-            return result;
+            try 
+            {
+                Players result = context.Players.Where(P => P.UserId == U).Include(P => P.AvatarImageNavigation).Include(P => P.TitleNavigation).First();
+                return result;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
+            
         }
 
         [HttpGet("allUserHeroes")]
@@ -66,9 +74,16 @@ namespace RPGtriviaProject.Controllers
             string U = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             //UserId matches long string of gibberish. Need to return all heroes of given player
-
-            Players result = context.Players.Where(P => P.UserId == U).Include("Heroes.HeroClassNavigation.ImageNavigation").First();
-            return result.Heroes.ToList();
+            try
+            {
+                Players result = context.Players.Where(P => P.UserId == U).Include("Heroes.HeroClassNavigation.ImageNavigation").First();
+                return result.Heroes.ToList();
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
+            
 
             //return context.Players.Heroes.Where(P => P.UserId == U).ToList();
         }

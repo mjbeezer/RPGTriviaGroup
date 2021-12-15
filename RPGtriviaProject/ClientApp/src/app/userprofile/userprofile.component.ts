@@ -32,6 +32,7 @@ export class UserprofileComponent {
     this.getPlayerHeroes();
 
   }
+
   getPlayer(): any {
     this.player_Service.GetCurrentPlayer().subscribe((response: any) => {
       this.currentPlayer = response;
@@ -39,6 +40,7 @@ export class UserprofileComponent {
       console.log(response.avatarImageNavigation.imageName);
     })
   }
+
   getPlayerHeroes(): any {
     this.player_Service.GetPlayerHeroes().subscribe((response: any) => {
       this.playerHeroes = response;
