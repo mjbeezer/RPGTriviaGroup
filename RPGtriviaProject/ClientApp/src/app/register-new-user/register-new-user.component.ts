@@ -15,7 +15,8 @@ import { PlayerService } from '../../../player.service';
 export class RegisterNewUserComponent {
 
   imageList: Images[] = [];
-  newbieTitle: Title = {} as Title
+  newbieTitle: Title = {} as Title;
+  currentPlayer: Player = {} as Player;
 
     /** registerNewUser ctor */
     constructor(private player_Service:PlayerService, private route: Router) {
@@ -53,4 +54,13 @@ export class RegisterNewUserComponent {
     })
 
   }
+
+  getPlayer(): any {
+    this.player_Service.GetCurrentPlayer().subscribe((response: any) => {
+      this.currentPlayer = response;
+      console.log(response);
+      console.log(response.avatarImageNavigation.imageName);
+    })
+  }
+
 }
