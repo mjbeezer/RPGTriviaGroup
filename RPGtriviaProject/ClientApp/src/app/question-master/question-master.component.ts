@@ -162,7 +162,7 @@ export class QuestionMasterComponent {
 
   heroHealthCheck(): void {
     console.log(this.currentHero.heroClassNavigation.healthPoints + "healthcheck");
-    if (this.currentHero.heroClassNavigation.healthPoints == 0) {
+    if (this.currentHero.heroClassNavigation.healthPoints <= 0) {
       this.iAmAlive = false;
     }
   }
