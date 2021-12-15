@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Hero, HeroInfo } from '../../../Hero';
 import { HeroService } from '../../../hero.service';
 import { PlayerService } from '../../../player.service';
@@ -13,7 +14,7 @@ import { PlayerService } from '../../../player.service';
 export class CreateHeroComponent {
 
   /** createHero ctor */
-  constructor(private hero_Service: HeroService, private player_Service: PlayerService) {
+  constructor(private hero_Service: HeroService, private player_Service: PlayerService, private route: Router) {
 
   }
 
@@ -28,6 +29,7 @@ export class CreateHeroComponent {
       console.log(response);
     });
 
+    this.route.navigate(["profile"]);
   }
 
 }

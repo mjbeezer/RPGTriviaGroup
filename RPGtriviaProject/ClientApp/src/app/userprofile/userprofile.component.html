@@ -1,63 +1,70 @@
-<h1 class="textcolor"> <img src="{{ currentPlayer.avatarImageNavigation.imageName }}" /></h1>
-<h4 class="textcolor">UserName: {{ currentPlayer.userName }}</h4>
-<h5 class="textcolor">Title: {{ currentPlayer.titleNavigation.title1 }}</h5>
-<h5 class="textcolor">Games Won: {{currentPlayer.gamesWon}}</h5>
-<div>
-  <button type="submit" (click)="deletePlayerProfile()">Delete Profile</button>
-</div><br />
-
-<h4 class="textcolor">Available Heroes</h4>
-<div class="textcolor" *ngFor="let H of playerHeroes">
-  <p> Hero Name: {{ H.name }}</p>
-  <p>Hero Class: {{ H.heroClassNavigation.class }}</p><br />
+<div class="card" style="text-align: center; background-color: #E0C097">
+  <h1 class=" row; col-3" style="background-color: #E0C097"> <img src="{{ currentPlayer.avatarImageNavigation.imageName }}" class="photobg"/></h1>
+  <h4>UserName: {{ currentPlayer.userName }}</h4>
+  <h5>Title: {{ currentPlayer.titleNavigation.title1 }}</h5>
+  <h5>Games Won: {{currentPlayer.gamesWon}}</h5>
 </div>
+<br />
 
-<div class="textcolor">
-  <h4>Change Title</h4>
+<h4 class="textcolor; card" style="text-align: center; background-color: #E0C097">Available Heroes</h4>
+<div class="textcolor; card" style="text-align: center; background-color: #E0C097" *ngFor="let H of playerHeroes">
+  <div style="outline:auto">
+    <p> Hero Name: {{ H.name }}</p>
+    <p>Hero Class: {{ H.heroClassNavigation.class }}</p>
+  </div>
+</div>
+<br />
+<h4 class="textcolor; card" style="text-align: center; background-color: #E0C097">Change Title</h4>
+
+<div class="card" style="text-align: center; background-color: #E0C097">
   <form #updateTitleForm="ngForm" (ngSubmit)="updatePlayerTitle(updateTitleForm)">
-    <label for="userTitle">Newbie</label><br />
-    <input name="titleId" id="userTitle1" type="radio" ngModel value="1" /><br />
+      <label for="userTitle">Newbie</label><br />
+      <input name="titleId" id="userTitle1" type="radio" ngModel value="1" /><br />
 
-    <label for="userTitle2">Weakling</label><br />
-    <div *ngIf="currentPlayer.gamesWon >= 5">
-      <input name="titleId" id="userTitle2" type="radio" ngModel value="2" /><br />
-    </div>
-    <div *ngIf="currentPlayer.gamesWon < 5">
-      <p id="userTitle2">Unlock this Title after winning 5 games!</p>
-    </div>
+      <label for="userTitle2">Weakling</label><br />
+      <div *ngIf="currentPlayer.gamesWon >= 5">
+        <input name="titleId" id="userTitle2" type="radio" ngModel value="2" /><br />
+      </div>
+      <div *ngIf="currentPlayer.gamesWon < 5">
+        <p id="userTitle2">Unlock this Title after winning 5 games!</p>
+      </div>
 
-    <label for="userTitle3">The Basic One</label><br />
-    <div *ngIf="currentPlayer.gamesWon >= 10">
-      <input name="titleId" id="userTitle3" type="radio" ngModel value="3" /><br />
-    </div>
-    <div *ngIf="currentPlayer.gamesWon < 10">
-      <p id="userTitle3">Unlock this Title after winning 10 games!</p>
-    </div>
+      <label for="userTitle3">The Basic One</label><br />
+      <div *ngIf="currentPlayer.gamesWon >= 10">
+        <input name="titleId" id="userTitle3" type="radio" ngModel value="3" /><br />
+      </div>
+      <div *ngIf="currentPlayer.gamesWon < 10">
+        <p id="userTitle3">Unlock this Title after winning 10 games!</p>
+      </div>
 
-    <label for="userTitle4">Oversized Cucumber</label><br />
-    <div *ngIf="currentPlayer.gamesWon >= 15">
-      <input name="titleId" id="userTitle4" type="radio" ngModel value="4" /><br />
-    </div>
-    <div *ngIf="currentPlayer.gamesWon < 15">
-      <p id="userTitle4">Unlock this Title after winning 15 games!</p>
-    </div>
+      <label for="userTitle4">Oversized Cucumber</label><br />
+      <div *ngIf="currentPlayer.gamesWon >= 15">
+        <input name="titleId" id="userTitle4" type="radio" ngModel value="4" /><br />
+      </div>
+      <div *ngIf="currentPlayer.gamesWon < 15">
+        <p id="userTitle4">Unlock this Title after winning 15 games!</p>
+      </div>
 
-    <label for="userTitle5">The Porckchop</label><br />
-    <div *ngIf="currentPlayer.gamesWon >= 20">
-      <input name="titleId" id="userTitle5" type="radio" ngModel value="5" /><br />
-    </div>
-    <div *ngIf="currentPlayer.gamesWon < 20">
-      <p id="userTitle5">Unlock this Title after winning 20 games!</p>
-    </div>
+      <label for="userTitle5">The Porckchop</label><br />
+      <div *ngIf="currentPlayer.gamesWon >= 20">
+        <input name="titleId" id="userTitle5" type="radio" ngModel value="5" /><br />
+      </div>
+      <div *ngIf="currentPlayer.gamesWon < 20">
+        <p id="userTitle5">Unlock this Title after winning 20 games!</p>
+      </div>
 
-    <label for="userTitle6">The Nerd King</label><br />
-    <div *ngIf="currentPlayer.gamesWon >= 25">
-      <input name="titleId" id="userTitle6" type="radio" ngModel value="6" /><br />
-    </div>
-    <div *ngIf="currentPlayer.gamesWon < 25">
-      <p id="userTitle6">Unlock this Title after winning 25 games!</p>
-    </div>
+      <label for="userTitle6">The Nerd King</label><br />
+      <div *ngIf="currentPlayer.gamesWon >= 25">
+        <input name="titleId" id="userTitle6" type="radio" ngModel value="6" /><br />
+      </div>
+      <div *ngIf="currentPlayer.gamesWon < 25">
+        <p id="userTitle6">Unlock this Title after winning 25 games!</p>
+      </div>
 
-    <input type="submit" value="Change Title" />
-  </form>
+      <input type="submit" value="Change Title" />
+</form>
+</div>
+<br />
+<div>
+  <button type="submit" (click)="deletePlayerProfile(currentPlayer.id)">Delete Profile</button>
 </div>
