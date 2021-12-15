@@ -1,16 +1,25 @@
 <br />
 <h5 class="card" style="outline: auto; background-color: #E0C097;text-align:center">Please Select a Hero</h5>
 <br />
-<div *ngIf="chosenHero == false">
-  <div *ngFor="let P of playerHeroes">
-    <div class="card" style="outline: auto; background-color: #E0C097; text-align:center">
-      <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
-        <label for="currentHero"> {{ P.name }} </label>
-        <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
-
-        <input type="submit" value="Select Hero" />
-      </form>
-    </div>
-    <br />
-  </div>
+<div *ngIf="currentPlayer == null" class="textcolor">
+  <p>Have you registered as a new player?</p>
+  <button [routerLink]="['/register']">Register New Player</button>
 </div>
+<br />
+<div *ngIf="playerHeroes.length == 0 && currentPlayer != null" class="textcolor">
+  <p>You have no heroes to choose from!</p>
+  <button [routerLink]="['/createhero']">Create Hero</button>
+</div>
+  <div *ngIf="chosenHero == false">
+    <div *ngFor="let P of playerHeroes">
+      <div class="card" style="outline: auto; background-color: #E0C097; text-align:center">
+        <form #selectHeroForm="ngForm" (ngSubmit)="loadCurrentHero(selectHeroForm)">
+          <label for="currentHero"> {{ P.name }} </label>
+          <input name="currentHero" id="currentHero" type="radio" ngModel value="{{ P.id }}"><br />
+
+          <input type="submit" value="Select Hero" />
+        </form>
+      </div>
+      <br />
+    </div>
+ </div>
