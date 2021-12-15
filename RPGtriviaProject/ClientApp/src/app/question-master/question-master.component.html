@@ -1,7 +1,7 @@
 
 <div *ngIf="iAmAlive == true">
   <div *ngFor="let t of [].constructor(QuestionCount); index as i"><app-trivia [checkDifficulty]="battleNumber" (checkInput)="dealDamage($event)" *ngIf="i == QuestionCount - 1" class="card" style="background-color: #E0C097; padding: 0.2rem"></app-trivia></div>
-  <div *ngIf="battleNumber < 4">
+  <div *ngIf="battleNumber <= 4">
     <div class="bg">
       <div style="text-align:end;padding:initial">
         <p>{{ villain.name }} :: {{ villain.race }}</p>
