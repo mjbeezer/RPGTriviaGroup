@@ -27,9 +27,9 @@ export class CreateHeroComponent {
 
     this.player_Service.CreatePlayerHero(name, heroClass).subscribe((response: any) => {
       console.log(response);
+      this.route.navigate(["profile"]);
     });
-
-    this.route.navigate(["profile"]);
+    
   }
 
 }

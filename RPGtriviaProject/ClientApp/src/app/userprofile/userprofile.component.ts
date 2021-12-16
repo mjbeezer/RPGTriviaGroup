@@ -78,7 +78,8 @@ export class UserprofileComponent {
     this.player_Service.DeletePlayerProfile(id).subscribe((response: any) => {
       this.currentPlayer = response;
       console.log(response);
+      this.route.navigate(["register"]);
     })
-    this.route.navigate(["register"]);
+    
   }
 }

@@ -5,15 +5,12 @@
   <img src="{{ P.ImageName }}">
 </div>-->
 
-<div *ngFor="let P of playerList">
-  <br />
-  <div>
-    <div class="card" style="outline: auto; background-color: white; text-align:center">
-      <img src="{{ P.avatarImageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097">
+<div class="row mb-5" *ngFor="let P of playerList">
+  <div class="col-4"></div>
+    <div class="card col-4" style="outline: auto; background-color: white; text-align:center">
+      <img src="{{ P.avatarImageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097; object-fit:scale-down">
       <h1>{{ P.userName }}: {{ P.titleNavigation.title1 }}</h1>
       <p>Games Won: {{ P.gamesWon }}</p>
     </div>
-  <br />
 </div>
-  <br />
-  <br />
+

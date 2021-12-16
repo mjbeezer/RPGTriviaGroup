@@ -1,6 +1,7 @@
-<div *ngFor="let V of villainList" >
-  <div class="card" style="outline: auto; background-color: #E0C097">
-    <img src="{{ V.imageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097" />
+<div class="row mb-5" *ngFor="let V of villainList" >
+  <div class="col-4"></div>
+  <div class="card col-4" style="outline: auto; background-color: #E0C097">
+    <img src="{{ V.imageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097; object-fit:scale-down;" />
     <div class="card" style="text-align:center; outline: auto">
       <h3>{{ V.name }} : {{ V.race }}</h3>
       <h4>HP: {{ V.healthPoints }}</h4>
@@ -8,6 +9,4 @@
       <h4>{{ V.ability }}</h4>
     </div>
   </div>
-  <br />
-  <br />
 </div>
