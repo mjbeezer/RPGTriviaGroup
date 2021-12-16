@@ -6,6 +6,8 @@ export interface Player {
   avatarColor: string;
   gamesWon: number;
   title: Title;
+  titleNavigation: Title;
+  avatarImageNavigation: Images;
 }
 
 export interface Images {
