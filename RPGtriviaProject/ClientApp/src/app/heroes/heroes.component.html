@@ -1,6 +1,7 @@
-<div *ngFor="let H of heroList" >
-  <div class="card" style="outline: auto; background-color: #E0C097;">
-    <img src="{{ H.imageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097" />
+<div class="row mb-5" *ngFor="let H of heroList" >
+  <div class="col-4"></div>
+  <div class="card col-4" style="outline: auto; background-color: #E0C097;">
+    <img src="{{ H.imageNavigation.imageName }}" class="card" style="outline: auto; background-color: #E0C097; object-fit:scale-down;" />
     <div class="card" style="outline: auto; text-align:center">
       
       <h3>{{ H.class }}</h3>
@@ -11,6 +12,4 @@
       Bio: {{ H.bio }}
     </p>
   </div>
-  <br />
-  <br />
 </div>

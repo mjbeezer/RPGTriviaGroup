@@ -25,6 +25,7 @@ export class RegisterNewUserComponent {
 
   ngOnInit(): void {
     this.LoadAvatarImages();
+    this.getPlayer();
   }
 
   RegisterNewPlayer(form: NgForm): void {
@@ -43,8 +44,9 @@ export class RegisterNewUserComponent {
     //title is int 1 for Newbie
     this.player_Service.RegisterNewPlayer(username, avatarImage, avatarColor, 1).subscribe((response: any) => {
       console.log(response);
+      this.route.navigate(["createhero"]);
     })
-    this.route.navigate(["createhero"]);
+    
   }
 
   LoadAvatarImages(): void {

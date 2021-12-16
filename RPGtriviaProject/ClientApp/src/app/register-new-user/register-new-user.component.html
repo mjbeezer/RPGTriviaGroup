@@ -1,8 +1,8 @@
-<div *ngIf="currentPlayer != null" class="textcolor">
+<div *ngIf="currentPlayer.userName != null" class="textcolor">
   <p>This player has already been created.</p>
 </div>
 
-<div *ngIf="currentPlayer == null" class="textcolor">
+<div *ngIf="currentPlayer.userName == null" class="textcolor">
   <form #registerNewUser="ngForm" (ngSubmit)="RegisterNewPlayer(registerNewUser)">
     <h3>Create A Player Profile</h3>
     <label for="username">Enter a UserName</label><br />
